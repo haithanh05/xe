@@ -1,0 +1,386 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Quản lý Danh mục - Phạm Nguyễn Hải Thành</title>
+    <link rel="stylesheet" href="../../css/bootstrap.min.css">
+    <link rel="stylesheet" href="../../css/all.min.css">
+    <link rel="stylesheet" href="../../css/hotensv.css">
+    
+    <style>
+        /* CSS cố định Sidebar bên trái */
+        @media (min-width: 768px) {
+            .sidebar {
+                position: fixed;
+                top: 0;
+                bottom: 0;
+                left: 0;
+                z-index: 100;
+                height: 100vh;
+                overflow-y: auto; /* Cuộn riêng sidebar nếu menu quá dài */
+            }
+            
+            /* Đẩy nội dung bên phải sang để không bị Sidebar đè lên */
+            main {
+                margin-left: 16.666667%; /* Tương đương độ rộng col-md-2 */
+            }
+        }
+    </style>
+</head>
+<body class="bg-light">
+
+    <div class="container-fluid">
+        <div class="row">
+
+            <!-- Sidebar Cố Định -->
+            <nav class="col-md-2 d-none d-md-block bg-dark sidebar py-3">
+                <div class="sidebar-sticky">
+                    <h5 class="text-white text-center mb-4">
+                        <i class="fas fa-user-shield"></i> ADMIN PANEL
+                    </h5>
+
+                    <ul class="nav flex-column text-white">
+                        <li class="nav-item mb-2">
+                            <a class="nav-link text-white" href="../index.html">
+                                <i class="fas fa-tachometer-alt"></i> Tổng quan
+                            </a>
+                        </li>
+
+                        <li class="nav-item mb-2">
+                            <!-- Đánh dấu màu vàng active trang Danh mục -->
+                            <a class="nav-link text-warning active fw-bold" href="../category/index.html">
+                                <i class="fas fa-folder"></i> Quản lý danh mục
+                            </a>
+                        </li>
+
+                        <li class="nav-item mb-2">
+                            <a class="nav-link text-white" href="../product/index.html">
+                                <i class="fas fa-box"></i> Quản lý sản phẩm
+                            </a>
+                        </li>
+
+                        <li class="nav-item mb-2">
+                            <a class="nav-link text-white" href="../order/index.html">
+                                <i class="fas fa-shopping-cart"></i> Quản lý đơn hàng
+                            </a>
+                        </li>
+
+                        <li class="nav-item mb-2">
+                            <a class="nav-link text-white" href="../banner/index.html">
+                                <i class="fas fa-images"></i> Quản lý Banner
+                            </a>
+                        </li>
+
+                        <li class="nav-item mb-2">
+                            <a class="nav-link text-white" href="../user/index.html">
+                                <i class="fas fa-users"></i> Quản lý người dùng
+                            </a>
+                        </li>
+
+                        <li class="nav-item mt-4">
+                            <a class="nav-link text-danger" href="../../index.html">
+                                <i class="fas fa-sign-out-alt"></i> Xem Website
+                            </a>
+                        </li>
+                    </ul>
+                </div>
+            </nav>
+
+            <!-- Nội dung bên phải (Cuộn tự do, không ảnh hưởng Sidebar) -->
+            <main class="col-md-10 p-4">
+                <div class="container-fluid py-2">
+                    <div class="card shadow-sm">
+                        <div class="card-header bg-dark text-white d-flex justify-content-between align-items-center">
+                            <h5 class="mb-0"><i class="fas fa-folder"></i> Danh sách danh mục sản phẩm</h5>
+                            <a href="create.html" class="btn btn-success btn-sm"><i class="fas fa-plus"></i> Thêm danh mục mới</a>
+                        </div>
+                        <div class="card-body p-0">
+                            <div class="table-responsive">
+                                <table class="table table-hover mb-0">
+                                    <thead class="thead-light">
+                                        <tr>
+                                            <th>STT</th>
+                                            <th>Tên danh mục</th>
+                                            <th>Mô tả</th>
+                                            <th>Hành động</th>
+                                        </tr>
+                                    </thead>
+                                    <tbody>
+                                        <tr>
+                                            <td>1</td>
+                                            <td>Honda City</td>
+                                            <td>Sedan hạng B - 1.5 i-VTEC - CVT</td>
+                                            <td>
+                                                <a href="edit.html" class="btn btn-sm btn-primary me-1">
+                                                    <i class="fas fa-edit"></i> Sửa
+                                                </a>
+                                                <button class="btn btn-sm btn-danger" onclick="return confirm('Xóa danh mục này?')">
+                                                    <i class="fas fa-trash"></i> Xóa
+                                                </button>
+                                            </td>
+                                        </tr>
+                                        <tr>
+                                            <td>2</td>
+                                            <td>Honda Civic</td>
+                                            <td>Sedan thể thao - 1.5 Turbo</td>
+                                            <td>
+                                                <a href="edit.html" class="btn btn-sm btn-primary me-1">
+                                                    <i class="fas fa-edit"></i> Sửa
+                                                </a>
+                                                <button class="btn btn-sm btn-danger" onclick="return confirm('Xóa danh mục này?')">
+                                                    <i class="fas fa-trash"></i> Xóa
+                                                </button>
+                                            </td>
+                                        </tr>
+                                        <tr>
+                                            <td>3</td>
+                                            <td>Honda Accord</td>
+                                            <td>Sedan hạng D cao cấp</td>
+                                            <td>
+                                                <a href="edit.html" class="btn btn-sm btn-primary me-1">
+                                                    <i class="fas fa-edit"></i> Sửa
+                                                </a>
+                                                <button class="btn btn-sm btn-danger" onclick="return confirm('Xóa danh mục này?')">
+                                                    <i class="fas fa-trash"></i> Xóa
+                                                </button>
+                                            </td>
+                                        </tr>
+                                        <tr>
+                                            <td>4</td>
+                                            <td>Honda HR-V</td>
+                                            <td>SUV đô thị - 1.5 Turbo</td>
+                                            <td>
+                                                <a href="edit.html" class="btn btn-sm btn-primary me-1">
+                                                    <i class="fas fa-edit"></i> Sửa
+                                                </a>
+                                                <button class="btn btn-sm btn-danger" onclick="return confirm('Xóa danh mục này?')">
+                                                    <i class="fas fa-trash"></i> Xóa
+                                                </button>
+                                            </td>
+                                        </tr>
+                                        <tr>
+                                            <td>5</td>
+                                            <td>Honda CR-V</td>
+                                            <td>SUV 7 chỗ - e:HEV Hybrid</td>
+                                            <td>
+                                                <a href="edit.html" class="btn btn-sm btn-primary me-1">
+                                                    <i class="fas fa-edit"></i> Sửa
+                                                </a>
+                                                <button class="btn btn-sm btn-danger" onclick="return confirm('Xóa danh mục này?')">
+                                                    <i class="fas fa-trash"></i> Xóa
+                                                </button>
+                                            </td>
+                                        </tr>
+                                        <tr>
+                                            <td>6</td>
+                                            <td>Honda BR-V</td>
+                                            <td>MPV 7 chỗ</td>
+                                            <td>
+                                                <a href="edit.html" class="btn btn-sm btn-primary me-1">
+                                                    <i class="fas fa-edit"></i> Sửa
+                                                </a>
+                                                <button class="btn btn-sm btn-danger" onclick="return confirm('Xóa danh mục này?')">
+                                                    <i class="fas fa-trash"></i> Xóa
+                                                </button>
+                                            </td>
+                                        </tr>
+                                        <tr>
+                                            <td>7</td>
+                                            <td>Honda WR-V</td>
+                                            <td>Crossover đô thị</td>
+                                            <td>
+                                                <a href="edit.html" class="btn btn-sm btn-primary me-1">
+                                                    <i class="fas fa-edit"></i> Sửa
+                                                </a>
+                                                <button class="btn btn-sm btn-danger" onclick="return confirm('Xóa danh mục này?')">
+                                                    <i class="fas fa-trash"></i> Xóa
+                                                </button>
+                                            </td>
+                                        </tr>
+                                        <tr>
+                                            <td>8</td>
+                                            <td>Honda Civic Type R</td>
+                                            <td>Xe thể thao hiệu suất cao</td>
+                                            <td>
+                                                <a href="edit.html" class="btn btn-sm btn-primary me-1">
+                                                    <i class="fas fa-edit"></i> Sửa
+                                                </a>
+                                                <button class="btn btn-sm btn-danger" onclick="return confirm('Xóa danh mục này?')">
+                                                    <i class="fas fa-trash"></i> Xóa
+                                                </button>
+                                            </td>
+                                        </tr>
+                                        <tr>
+                                            <td>9</td>
+                                            <td>Toyota Vios</td>
+                                            <td>Sedan hạng B - Quốc dân</td>
+                                            <td>
+                                                <a href="edit.html" class="btn btn-sm btn-primary me-1">
+                                                    <i class="fas fa-edit"></i> Sửa
+                                                </a>
+                                                <button class="btn btn-sm btn-danger" onclick="return confirm('Xóa danh mục này?')">
+                                                    <i class="fas fa-trash"></i> Xóa
+                                                </button>
+                                            </td>
+                                        </tr>
+                                        <tr>
+                                            <td>10</td>
+                                            <td>Toyota Corolla Cross</td>
+                                            <td>SUV đô thị hạng B+</td>
+                                            <td>
+                                                <a href="edit.html" class="btn btn-sm btn-primary me-1">
+                                                    <i class="fas fa-edit"></i> Sửa
+                                                </a>
+                                                <button class="btn btn-sm btn-danger" onclick="return confirm('Xóa danh mục này?')">
+                                                    <i class="fas fa-trash"></i> Xóa
+                                                </button>
+                                            </td>
+                                        </tr>
+                                        <tr>
+                                            <td>11</td>
+                                            <td>Mazda 3</td>
+                                            <td>Sedan hạng C - Thiết kế Kodo</td>
+                                            <td>
+                                                <a href="edit.html" class="btn btn-sm btn-primary me-1">
+                                                    <i class="fas fa-edit"></i> Sửa
+                                                </a>
+                                                <button class="btn btn-sm btn-danger" onclick="return confirm('Xóa danh mục này?')">
+                                                    <i class="fas fa-trash"></i> Xóa
+                                                </button>
+                                            </td>
+                                        </tr>
+                                        <tr>
+                                            <td>12</td>
+                                            <td>Mazda CX-5</td>
+                                            <td>CUV 5 chỗ hạng C</td>
+                                            <td>
+                                                <a href="edit.html" class="btn btn-sm btn-primary me-1">
+                                                    <i class="fas fa-edit"></i> Sửa
+                                                </a>
+                                                <button class="btn btn-sm btn-danger" onclick="return confirm('Xóa danh mục này?')">
+                                                    <i class="fas fa-trash"></i> Xóa
+                                                </button>
+                                            </td>
+                                        </tr>
+                                        <tr>
+                                            <td>13</td>
+                                            <td>Hyundai Accent</td>
+                                            <td>Sedan hạng B trẻ trung</td>
+                                            <td>
+                                                <a href="edit.html" class="btn btn-sm btn-primary me-1">
+                                                    <i class="fas fa-edit"></i> Sửa
+                                                </a>
+                                                <button class="btn btn-sm btn-danger" onclick="return confirm('Xóa danh mục này?')">
+                                                    <i class="fas fa-trash"></i> Xóa
+                                                </button>
+                                            </td>
+                                        </tr>
+                                        <tr>
+                                            <td>14</td>
+                                            <td>Hyundai SantaFe</td>
+                                            <td>SUV 7 chỗ hạng D</td>
+                                            <td>
+                                                <a href="edit.html" class="btn btn-sm btn-primary me-1">
+                                                    <i class="fas fa-edit"></i> Sửa
+                                                </a>
+                                                <button class="btn btn-sm btn-danger" onclick="return confirm('Xóa danh mục này?')">
+                                                    <i class="fas fa-trash"></i> Xóa
+                                                </button>
+                                            </td>
+                                        </tr>
+                                        <tr>
+                                            <td>15</td>
+                                            <td>Kia Seltos</td>
+                                            <td>SUV đô thị cỡ nhỏ</td>
+                                            <td>
+                                                <a href="edit.html" class="btn btn-sm btn-primary me-1">
+                                                    <i class="fas fa-edit"></i> Sửa
+                                                </a>
+                                                <button class="btn btn-sm btn-danger" onclick="return confirm('Xóa danh mục này?')">
+                                                    <i class="fas fa-trash"></i> Xóa
+                                                </button>
+                                            </td>
+                                        </tr>
+                                        <tr>
+                                            <td>16</td>
+                                            <td>Kia Carnival</td>
+                                            <td>MPV cỡ lớn cao cấp</td>
+                                            <td>
+                                                <a href="edit.html" class="btn btn-sm btn-primary me-1">
+                                                    <i class="fas fa-edit"></i> Sửa
+                                                </a>
+                                                <button class="btn btn-sm btn-danger" onclick="return confirm('Xóa danh mục này?')">
+                                                    <i class="fas fa-trash"></i> Xóa
+                                                </button>
+                                            </td>
+                                        </tr>
+                                        <tr>
+                                            <td>17</td>
+                                            <td>Mitsubishi Xpander</td>
+                                            <td>MPV 7 chỗ gia đình</td>
+                                            <td>
+                                                <a href="edit.html" class="btn btn-sm btn-primary me-1">
+                                                    <i class="fas fa-edit"></i> Sửa
+                                                </a>
+                                                <button class="btn btn-sm btn-danger" onclick="return confirm('Xóa danh mục này?')">
+                                                    <i class="fas fa-trash"></i> Xóa
+                                                </button>
+                                            </td>
+                                        </tr>
+                                        <tr>
+                                            <td>18</td>
+                                            <td>Ford Ranger</td>
+                                            <td>Xe bán tải (Pick-up)</td>
+                                            <td>
+                                                <a href="edit.html" class="btn btn-sm btn-primary me-1">
+                                                    <i class="fas fa-edit"></i> Sửa
+                                                </a>
+                                                <button class="btn btn-sm btn-danger" onclick="return confirm('Xóa danh mục này?')">
+                                                    <i class="fas fa-trash"></i> Xóa
+                                                </button>
+                                            </td>
+                                        </tr>
+                                        <tr>
+                                            <td>19</td>
+                                            <td>Ford Everest</td>
+                                            <td>SUV 7 chỗ Off-road</td>
+                                            <td>
+                                                <a href="edit.html" class="btn btn-sm btn-primary me-1">
+                                                    <i class="fas fa-edit"></i> Sửa
+                                                </a>
+                                                <button class="btn btn-sm btn-danger" onclick="return confirm('Xóa danh mục này?')">
+                                                    <i class="fas fa-trash"></i> Xóa
+                                                </button>
+                                            </td>
+                                        </tr>
+                                        <tr>
+                                            <td>20</td>
+                                            <td>VinFast VF 8</td>
+                                            <td>SUV điện thông minh hạng D</td>
+                                            <td>
+                                                <a href="edit.html" class="btn btn-sm btn-primary me-1">
+                                                    <i class="fas fa-edit"></i> Sửa
+                                                </a>
+                                                <button class="btn btn-sm btn-danger" onclick="return confirm('Xóa danh mục này?')">
+                                                    <i class="fas fa-trash"></i> Xóa
+                                                </button>
+                                            </td>
+                                        </tr>
+                                    </tbody>
+                                </table>
+                            </div>
+                        </div>
+                    </div>
+                    <p class="mt-3">
+                        <a href="../index.html" class="btn btn-secondary"><i class="fas fa-arrow-left"></i> Quay lại Dashboard</a>
+                    </p>
+                </div>
+            </main>
+
+        </div>
+    </div>
+
+    <script src="../../js/bootstrap.bundle.min.js"></script>
+</body>
+</html>

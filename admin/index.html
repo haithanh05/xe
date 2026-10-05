@@ -1,0 +1,286 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Hệ thống Quản trị - Phạm Nguyễn Hải Thành</title>
+    <link class="styles" rel="stylesheet" href="../css/bootstrap.min.css">
+    <link class="styles" rel="stylesheet" href="../css/all.min.css">
+    <link class="styles" rel="stylesheet" href="../css/hotensv.css">
+
+    <style>
+        /* CSS cố định Sidebar bên trái */
+        @media (min-width: 768px) {
+            .sidebar {
+                position: fixed;
+                top: 0;
+                bottom: 0;
+                left: 0;
+                z-index: 100;
+                height: 100vh;
+                overflow-y: auto; /* Cho phép cuộn sidebar độc lập nếu menu quá dài */
+            }
+            
+            /* Đẩy phần nội dung chính sang phải để không bị Sidebar đè lên */
+            main {
+                margin-left: 16.666667%; /* Chiếm đúng độ rộng của col-md-2 */
+            }
+        }
+    </style>
+</head>
+<body class="bg-light">
+
+    <div class="container-fluid">
+        <div class="row">
+            <!-- Sidebar bên trái -->
+            <nav class="col-md-2 d-none d-md-block bg-dark sidebar py-3">
+                <div class="sidebar-sticky">
+                    <h5 class="text-white text-center mb-4">
+                        <i class="fas fa-user-shield"></i> ADMIN PANEL
+                    </h5>
+                    <ul class="nav flex-column text-white">
+                        <li class="nav-item mb-2">
+                            <a class="nav-link text-warning active fw-bold" href="index.html">
+                                <i class="fas fa-tachometer-alt"></i> Tổng quan
+                            </a>
+                        </li>
+                        <li class="nav-item mb-2">
+                            <a class="nav-link text-white" href="category/index.html">
+                                <i class="fas fa-folder"></i> Quản lý danh mục
+                            </a>
+                        </li>
+                        <li class="nav-item mb-2">
+                            <a class="nav-link text-white" href="product/index.html">
+                                <i class="fas fa-box"></i> Quản lý sản phẩm
+                            </a>
+                        </li>
+                        <li class="nav-item mb-2">
+                            <a class="nav-link text-white" href="order/index.html">
+                                <i class="fas fa-shopping-cart"></i> Quản lý đơn hàng
+                            </a>
+                        </li>
+                        <li class="nav-item mb-2">
+                            <a class="nav-link text-white" href="banner/index.html">
+                                <i class="fas fa-images"></i> Quản lý Banner
+                            </a>
+                        </li>
+                        <li class="nav-item mb-2">
+                            <a class="nav-link text-white" href="user/index.html">
+                                <i class="fas fa-users"></i> Quản lý người dùng
+                            </a>
+                        </li>
+                        <li class="nav-item mt-4">
+                            <a class="nav-link text-danger" href="../index.html">
+                                <i class="fas fa-sign-out-alt"></i> Xem Website
+                            </a>
+                        </li>
+                    </ul>
+                </div>
+            </nav>
+
+            <!-- Nội dung chính bên phải -->
+            <main role="main" class="col-md-10 px-4 py-3">
+                <div class="d-flex justify-content-between flex-wrap flex-md-nowrap align-items-center pt-3 pb-2 mb-3 border-bottom">
+                    <h1 class="h2">Trang tổng quan điều khiển</h1>
+                </div>
+
+                <!-- Thống kê dạng Card -->
+                <div class="row">
+                    <div class="col-md-3 mb-4">
+                        <div class="card bg-primary text-white h-100 border-0 shadow-sm">
+                            <div class="card-body d-flex justify-content-between align-items-center">
+                                <div>
+                                    <h3 class="fw-bold">150</h3>
+                                    <span>Sản phẩm</span>
+                                </div>
+                                <i class="fas fa-box fa-3x opacity-50"></i>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-md-3 mb-4">
+                        <div class="card bg-success text-white h-100 border-0 shadow-sm">
+                            <div class="card-body d-flex justify-content-between align-items-center">
+                                <div>
+                                    <h3 class="fw-bold">1,245</h3>
+                                    <span>Đơn hàng mua</span>
+                                </div>
+                                <i class="fas fa-shopping-cart fa-3x opacity-50"></i>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-md-3 mb-4">
+                        <div class="card bg-warning text-dark h-100 border-0 shadow-sm">
+                            <div class="card-body d-flex justify-content-between align-items-center">
+                                <div>
+                                    <h3 class="fw-bold">12 danh mục</h3>
+                                    <span>Danh mục ngành</span>
+                                </div>
+                                <i class="fas fa-folder fa-3x opacity-50"></i>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-md-3 mb-4">
+                        <div class="card bg-danger text-white h-100 border-0 shadow-sm">
+                            <div class="card-body d-flex justify-content-between align-items-center">
+                                <div>
+                                    <h3 class="fw-bold">48</h3>
+                                    <span>Thành viên</span>
+                                </div>
+                                <i class="fas fa-users fa-3x opacity-50"></i>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Bảng hiển thị Đơn hàng gần đây -->
+                <div class="card mt-2 shadow-sm border-0">
+                    <div class="card-header bg-white fw-bold py-3 border-bottom">
+                        <i class="fas fa-list-alt text-danger me-2"></i> Đơn hàng mới nhất cần xử lý
+                    </div>
+                    <div class="card-body p-0">
+                        <div class="table-responsive">
+                            <table class="table table-striped table-hover align-middle mb-0 text-center">
+                                <thead class="table-dark">
+                                    <tr>
+                                        <th>Mã ĐH</th>
+                                        <th class="text-start">Khách hàng</th>
+                                        <th>Ngày đặt</th>
+                                        <th>Tổng tiền</th>
+                                        <th>Trạng thái</th>
+                                        <th>Hành động</th>
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                    <tr>
+                                        <td class="fw-bold">#DH001</td>
+                                        <td class="text-start">Nguyễn Văn A</td>
+                                        <td>10/07/2026</td>
+                                        <td class="fw-bold text-danger">1.500.000.000đ</td>
+                                        <td><span class="badge bg-warning text-dark p-2">Đang chờ xử lý</span></td>
+                                        <td><a href="order/detail.html" class="btn btn-sm btn-info text-white"><i class="fas fa-eye"></i> Xem</a></td>
+                                    </tr>
+                                    <tr>
+                                        <td class="fw-bold">#DH002</td>
+                                        <td class="text-start">Trần Thị Bích Ngọc</td>
+                                        <td>11/07/2026</td>
+                                        <td class="fw-bold text-danger">3.250.000.000đ</td>
+                                        <td><span class="badge bg-success text-white p-2">Đã hoàn thành</span></td>
+                                        <td><a href="order/detail.html" class="btn btn-sm btn-info text-white"><i class="fas fa-eye"></i> Xem</a></td>
+                                    </tr>
+                                    <tr>
+                                        <td class="fw-bold">#DH003</td>
+                                        <td class="text-start">Lê Hoàng Nam</td>
+                                        <td>11/07/2026</td>
+                                        <td class="fw-bold text-danger">850.000.000đ</td>
+                                        <td><span class="badge bg-info text-dark p-2">Đang vận chuyển</span></td>
+                                        <td><a href="order/detail.html" class="btn btn-sm btn-info text-white"><i class="fas fa-eye"></i> Xem</a></td>
+                                    </tr>
+                                    <tr>
+                                        <td class="fw-bold">#DH004</td>
+                                        <td class="text-start">Phạm Minh Đức</td>
+                                        <td>12/07/2026</td>
+                                        <td class="fw-bold text-danger">9.500.000.000đ</td>
+                                        <td><span class="badge bg-warning text-dark p-2">Đang chờ xử lý</span></td>
+                                        <td><a href="order/detail.html" class="btn btn-sm btn-info text-white"><i class="fas fa-eye"></i> Xem</a></td>
+                                    </tr>
+                                    <tr>
+                                        <td class="fw-bold">#DH005</td>
+                                        <td class="text-start">Vũ Khánh Linh</td>
+                                        <td>12/07/2026</td>
+                                        <td class="fw-bold text-danger">1.250.000.000đ</td>
+                                        <td><span class="badge bg-danger text-white p-2">Đã hủy</span></td>
+                                        <td><a href="order/detail.html" class="btn btn-sm btn-info text-white"><i class="fas fa-eye"></i> Xem</a></td>
+                                    </tr>
+                                    <tr>
+                                        <td class="fw-bold">#DH006</td>
+                                        <td class="text-start">Nguyễn Hoàng Long</td>
+                                        <td>13/07/2026</td>
+                                        <td class="fw-bold text-danger">6.200.000.000đ</td>
+                                        <td><span class="badge bg-success text-white p-2">Đã hoàn thành</span></td>
+                                        <td><a href="order/detail.html" class="btn btn-sm btn-info text-white"><i class="fas fa-eye"></i> Xem</a></td>
+                                    </tr>
+                                    <tr>
+                                        <td class="fw-bold">#DH007</td>
+                                        <td class="text-start">Đỗ Thùy Dương</td>
+                                        <td>13/07/2026</td>
+                                        <td class="fw-bold text-danger">2.150.000.000đ</td>
+                                        <td><span class="badge bg-info text-dark p-2">Đang vận chuyển</span></td>
+                                        <td><a href="order/detail.html" class="btn btn-sm btn-info text-white"><i class="fas fa-eye"></i> Xem</a></td>
+                                    </tr>
+                                    <tr>
+                                        <td class="fw-bold">#DH008</td>
+                                        <td class="text-start">Phan Văn Hải</td>
+                                        <td>14/07/2026</td>
+                                        <td class="fw-bold text-danger">5.800.000.000đ</td>
+                                        <td><span class="badge bg-warning text-dark p-2">Đang chờ xử lý</span></td>
+                                        <td><a href="order/detail.html" class="btn btn-sm btn-info text-white"><i class="fas fa-eye"></i> Xem</a></td>
+                                    </tr>
+                                    <tr>
+                                        <td class="fw-bold">#DH009</td>
+                                        <td class="text-start">Lâm Mỹ Uyên</td>
+                                        <td>14/07/2026</td>
+                                        <td class="fw-bold text-danger">7.300.000.000đ</td>
+                                        <td><span class="badge bg-success text-white p-2">Đã hoàn thành</span></td>
+                                        <td><a href="order/detail.html" class="btn btn-sm btn-info text-white"><i class="fas fa-eye"></i> Xem</a></td>
+                                    </tr>
+                                    <tr>
+                                        <td class="fw-bold">#DH010</td>
+                                        <td class="text-start">Bùi Tiến Dũng</td>
+                                        <td>15/07/2026</td>
+                                        <td class="fw-bold text-danger">990.000.000đ</td>
+                                        <td><span class="badge bg-info text-dark p-2">Đang vận chuyển</span></td>
+                                        <td><a href="order/detail.html" class="btn btn-sm btn-info text-white"><i class="fas fa-eye"></i> Xem</a></td>
+                                    </tr>
+                                    <tr>
+                                        <td class="fw-bold">#DH011</td>
+                                        <td class="text-start">Trịnh Gia Bảo</td>
+                                        <td>15/07/2026</td>
+                                        <td class="fw-bold text-danger">2.700.000.000đ</td>
+                                        <td><span class="badge bg-warning text-dark p-2">Đang chờ xử lý</span></td>
+                                        <td><a href="order/detail.html" class="btn btn-sm btn-info text-white"><i class="fas fa-eye"></i> Xem</a></td>
+                                    </tr>
+                                    <tr>
+                                        <td class="fw-bold">#DH012</td>
+                                        <td class="text-start">Vương Lệ Hằng</td>
+                                        <td>16/07/2026</td>
+                                        <td class="fw-bold text-danger">1.100.000.000đ</td>
+                                        <td><span class="badge bg-success text-white p-2">Đã hoàn thành</span></td>
+                                        <td><a href="order/detail.html" class="btn btn-sm btn-info text-white"><i class="fas fa-eye"></i> Xem</a></td>
+                                    </tr>
+                                    <tr>
+                                        <td class="fw-bold">#DH013</td>
+                                        <td class="text-start">Hoàng Quốc Khánh</td>
+                                        <td>16/07/2026</td>
+                                        <td class="fw-bold text-danger">750.000.000đ</td>
+                                        <td><span class="badge bg-danger text-white p-2">Đã hủy</span></td>
+                                        <td><a href="order/detail.html" class="btn btn-sm btn-info text-white"><i class="fas fa-eye"></i> Xem</a></td>
+                                    </tr>
+                                    <tr>
+                                        <td class="fw-bold">#DH014</td>
+                                        <td class="text-start">Mai Phương Thảo</td>
+                                        <td>17/07/2026</td>
+                                        <td class="fw-bold text-danger">3.650.000.000đ</td>
+                                        <td><span class="badge bg-info text-dark p-2">Đang vận chuyển</span></td>
+                                        <td><a href="order/detail.html" class="btn btn-sm btn-info text-white"><i class="fas fa-eye"></i> Xem</a></td>
+                                    </tr>
+                                    <tr>
+                                        <td class="fw-bold">#DH015</td>
+                                        <td class="text-start">Tạ Đình Phong</td>
+                                        <td>17/07/2026</td>
+                                        <td class="fw-bold text-danger">4.200.000.000đ</td>
+                                        <td><span class="badge bg-warning text-dark p-2">Đang chờ xử lý</span></td>
+                                        <td><a href="order/detail.html" class="btn btn-sm btn-info text-white"><i class="fas fa-eye"></i> Xem</a></td>
+                                    </tr>
+                                </tbody>
+                            </table>
+                        </div>
+                    </div>
+                </div>
+            </main>
+        </div>
+    </div>
+
+    <script src="../js/bootstrap.bundle.min.js"></script>
+    <script src="../js/main.js"></script>
+</body>
+</html>

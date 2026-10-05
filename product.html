@@ -1,0 +1,654 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Danh sách xe - Phạm Nguyễn Hải Thành</title>
+    <link class="styles" rel="stylesheet" href="css/bootstrap.min.css">
+    <link class="styles" rel="stylesheet" href="css/all.min.css">
+    <link class="styles" rel="stylesheet" href="css/hotensv.css">
+
+    <!-- Phong cách tùy chỉnh Siêu Thể Thao (Super Sport) cho Danh sách xe -->
+    <style>
+        /* 1. KHUNG TÌM KIẾM CAO CẤP */
+        .search-control {
+            border: 1px solid #e2e8f0;
+            padding: 12px 18px;
+            font-weight: 500;
+            border-radius: 8px !important;
+            transition: all 0.3s cubic-bezier(0.165, 0.84, 0.44, 1);
+        }
+        .search-control:focus {
+            border-color: #dc3545 !important;
+            box-shadow: 0 0 15px rgba(220, 53, 69, 0.15) !important;
+            background-color: #fff !important;
+        }
+        .input-group-text-sport {
+            background-color: #f8f9fa;
+            border: 1px solid #e2e8f0;
+            border-right: none !important;
+            border-radius: 8px 0 0 8px !important;
+            color: #6c757d;
+            transition: all 0.3s ease;
+        }
+        .input-group:focus-within .input-group-text-sport {
+            border-color: #dc3545 !important;
+            color: #dc3545 !important;
+            background-color: rgba(220, 53, 69, 0.02) !important;
+        }
+        .btn-search-sport {
+            border-radius: 8px !important;
+            padding: 12px 24px;
+            background: linear-gradient(135deg, #dc3545 0%, #a71d2a 100%);
+            border: none;
+            transition: all 0.3s ease;
+        }
+        .btn-search-sport:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 8px 20px rgba(220, 53, 69, 0.3);
+            background: linear-gradient(135deg, #ff3d50 0%, #dc3545 100%);
+        }
+
+        /* 2. THẺ XE NÂNG CẤP HOVER 3D RACING */
+        .hover-card {
+            transition: all 0.4s cubic-bezier(0.165, 0.84, 0.44, 1);
+            border: 1px solid rgba(0, 0, 0, 0.04) !important;
+            border-radius: 16px !important;
+            overflow: hidden;
+            background: #fff;
+            position: relative;
+        }
+        /* Hiệu ứng thanh LED đỏ chìm trên đỉnh thẻ xe */
+        .hover-card::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 3px;
+            background: linear-gradient(90deg, transparent, #dc3545, transparent);
+            transform: scaleX(0);
+            transition: transform 0.4s ease;
+            z-index: 5;
+        }
+        .hover-card:hover::before {
+            transform: scaleX(1);
+        }
+        .hover-card:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 20px 40px rgba(0, 0, 0, 0.1) !important;
+            border-color: rgba(220, 53, 69, 0.2) !important;
+        }
+
+        /* 3. KHUNG ẢNH XE HIỆU ỨNG ĐỘNG */
+        .card-img-container {
+            height: 190px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            padding: 24px;
+            background: radial-gradient(circle, #ffffff 60%, #f9f9fb 100%);
+            position: relative;
+            overflow: hidden;
+        }
+        /* Tạo bóng đổ ảo dưới gầm xe */
+        .card-img-container::after {
+            content: '';
+            position: absolute;
+            bottom: 12px;
+            left: 15%;
+            width: 70%;
+            height: 8px;
+            background: radial-gradient(ellipse at center, rgba(0,0,0,0.06) 0%, rgba(0,0,0,0) 70%);
+            transition: transform 0.4s ease;
+        }
+        .hover-card:hover .card-img-container::after {
+            transform: scaleX(1.2) translateY(2px);
+            opacity: 0.8;
+        }
+        .card-img-container img {
+            max-height: 100%;
+            object-fit: contain;
+            transition: transform 0.5s cubic-bezier(0.165, 0.84, 0.44, 1);
+            z-index: 2;
+        }
+        /* Xe bứt tốc tiến về phía trước khi hover */
+        .hover-card:hover .card-img-container img {
+            transform: scale(1.08) translateY(-6px);
+        }
+
+        /* 4. CHỮ SỐ GIÁ TIỀN & BADGES */
+        .badge-sport {
+            font-size: 0.7rem;
+            font-weight: 800;
+            letter-spacing: 0.5px;
+            text-transform: uppercase;
+            padding: 6px 12px !important;
+            border-radius: 50px !important;
+            box-shadow: 0 2px 6px rgba(0,0,0,0.04);
+        }
+        .price-text {
+            color: #dc3545;
+            font-weight: 900;
+            font-size: 1.25rem;
+            letter-spacing: -0.5px;
+            text-shadow: 0 1px 1px rgba(220,53,69,0.03);
+        }
+
+        /* 5. NÚT XEM CHI TIẾT ĐIỀU HƯỚNG CHUYỂN ĐỘNG (GHOST BUTTON) */
+        .btn-detail-sport {
+            border-radius: 50px !important;
+            padding: 10px 20px;
+            font-weight: 700;
+            text-transform: uppercase;
+            font-size: 0.8rem;
+            letter-spacing: 0.5px;
+            border: 2px solid #dc3545;
+            background-color: transparent;
+            color: #dc3545;
+            position: relative;
+            overflow: hidden;
+            z-index: 1;
+            transition: all 0.35s cubic-bezier(0.165, 0.84, 0.44, 1);
+        }
+        .btn-detail-sport::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: #dc3545;
+            z-index: -1;
+            transform: scaleX(0);
+            transform-origin: left;
+            transition: transform 0.35s cubic-bezier(0.165, 0.84, 0.44, 1);
+        }
+        .btn-detail-sport:hover {
+            color: #fff !important;
+        }
+        .btn-detail-sport:hover::before {
+            transform: scaleX(1);
+        }
+
+        /* 6. PHÂN TRANG DẠNG TRÒN THỂ THAO */
+        .pagination-sport .page-item {
+            margin: 0 4px;
+        }
+        .pagination-sport .page-link {
+            border: 1px solid #e2e8f0;
+            color: #495057;
+            font-weight: 700;
+            width: 42px;
+            height: 42px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            border-radius: 50px !important;
+            transition: all 0.3s ease;
+        }
+        .pagination-sport .page-link:hover {
+            background-color: #dc3545;
+            border-color: #dc3545;
+            color: #fff;
+            transform: scale(1.08);
+            box-shadow: 0 5px 15px rgba(220, 53, 69, 0.2);
+        }
+        .pagination-sport .page-item.active .page-link {
+            background-color: #dc3545;
+            border-color: #dc3545;
+            color: #fff;
+            box-shadow: 0 5px 15px rgba(220, 53, 69, 0.3);
+        }
+    </style>
+</head>
+<body class="bg-light">
+
+
+    <!-- ================= TOPBAR (THÔNG TIN LIÊN HỆ & ĐĂNG NHẬP) ================= -->
+    <div class="top-header text-white-50 py-2 d-none d-md-block">
+        <div class="container">
+            <div class="row align-items-center">
+                <div class="col-md-7">
+                    <span class="me-4"><i class="fa-solid fa-map-marker-alt text-danger me-2"></i>Khu Công Nghệ Cao, Q. 9, TP. Hồ Chí Minh</span>
+                    <span><i class="fa-solid fa-phone text-danger me-2"></i>Hotline lái thử & Đặt xe: 0988.305.473</span>
+                </div>
+                <div class="col-md-5 text-end">
+                    <a href="login.html" class="text-white-50 text-decoration-none me-3 hover-white"><i class="fa-solid fa-sign-in-alt me-1 text-danger"></i>Đăng nhập</a>
+                    <a href="register.html" class="text-white-50 text-decoration-none hover-white"><i class="fa-solid fa-user-plus me-1 text-danger"></i>Đăng ký thành viên</a>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- ================= NAVBAR (THANH CHƯƠNG TRÌNH ĐIỀU HƯỚNG) ================= -->
+    <nav class="navbar navbar-expand-lg navbar-light bg-white sticky-top shadow-sm py-3">
+        <div class="container">
+            <!-- Logo thương hiệu -->
+            <a class="navbar-brand d-flex align-items-center" href="index.html">
+                <img src="images/logo.png" alt="Honda Logo" height="42">
+                <div class="ms-3 border-start border-2 border-danger ps-3">
+                    <h4 class="mb-0 fw-extrabold text-danger text-uppercase" style="letter-spacing: -0.5px;">Honda Hải Thành</h4>
+                    <small class="text-muted text-uppercase fw-bold" style="font-size: 0.7rem;">Hành trình dẫn lối thành công</small>
+                </div>
+            </a>
+            
+            <button class="navbar-toggler border-0" type="button" data-bs-toggle="collapse" data-bs-target="#mainNavbar">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+
+            <div class="collapse navbar-collapse" id="mainNavbar">
+                <ul class="navbar-nav mx-auto mb-2 mb-lg-0 fw-semibold text-uppercase" style="font-size: 0.9rem;">
+                    <li class="nav-item">
+                        <a class="nav-link text-dark" href="index.html">Trang chủ</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link active text-danger" href="product.html">Sản phẩm Ôtô</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link text-dark" href="post.html">Tin tức & Khuyến mãi</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link text-dark" href="contact.html">Liên hệ</a>
+                    </li>
+                </ul>
+                <div class="d-flex gap-2">
+                    <!-- Liên kết trực tiếp vào giỏ hàng/xe quan tâm -->
+                    <a href="cart.html" class="btn btn-outline-danger rounded-pill px-4 btn-sm d-flex align-items-center fw-bold">
+                        <i class="fa-solid fa-heart me-2"></i>Xe quan tâm
+                    </a>
+                    <a href="admin/index.html" class="btn btn-dark rounded-pill px-4 btn-sm d-flex align-items-center fw-bold">
+                        <i class="fa-solid fa-user-shield me-2"></i>Trang Admin
+                    </a>
+                </div>
+            </div>
+        </div>
+    </nav>
+
+
+    <!-- ================= BANNER TRANG TRÍ (ĐỒNG BỘ ĐEN THỂ THAO) ================= -->
+    <section class="text-white py-5 position-relative" style="
+        background: linear-gradient(135deg, rgba(11, 11, 12, 0.96) 35%, rgba(20, 20, 22, 0.85) 100%), 
+                    url('images/honda-racing-bg.jpg') no-repeat center center;
+        background-size: cover;
+        border-bottom: 4px solid #dc3545;
+        box-shadow: 0 10px 30px rgba(0, 0, 0, 0.5);
+        overflow: hidden;
+    ">
+        <!-- Lớp phủ mạng lưới thể thao (Honeycomb Grid Effect) tạo chiều sâu cho xe đua -->
+        <div class="position-absolute top-0 start-0 w-100 h-100" style="
+            background-image: radial-gradient(rgba(220, 53, 69, 0.12) 1px, transparent 0);
+            background-size: 20px 20px;
+            pointer-events: none;
+            z-index: 1;
+        "></div>
+
+        <div class="container text-center py-4 position-relative" style="z-index: 2;">
+            <!-- Badge Đỏ Neon -->
+            <div class="d-inline-block border border-danger px-3 py-1 mb-3 rounded-1 text-danger fw-bold text-uppercase" style="
+                font-size: 0.75rem; 
+                letter-spacing: 2px; 
+                background-color: rgba(220, 53, 69, 0.12);
+                box-shadow: 0 0 15px rgba(220, 53, 69, 0.25);
+            ">
+                <i class="fa-solid fa-car me-1"></i> HONDA SHOWROOM
+            </div>
+            
+            <!-- Tiêu đề lớn Đen Thể Thao cực ngầu -->
+            <h1 class="fw-extrabold text-uppercase display-5 mb-2" style="
+                font-weight: 900; 
+                letter-spacing: 2px; 
+                text-shadow: 0 3px 10px rgba(0, 0, 0, 0.9);
+            ">
+                Danh sách <span class="text-danger">xe Honda</span>
+            </h1>
+            
+            <!-- Phụ đề chữ phong cách máy tính xe đua (Monospace) -->
+            <p class="lead mb-0 text-muted font-monospace" style="
+                font-size: 0.95rem; 
+                color: #a0a0a5 !important;
+                letter-spacing: 0.5px;
+            ">
+                Khám phá các mẫu ô tô Honda Việt Nam mới nhất.
+            </p>
+        </div>
+    </section>
+
+
+    <!-- TÌM KIẾM -->
+    <section class="py-4 bg-white shadow-sm position-relative" style="z-index: 10;">
+        <div class="container">
+            <div class="row g-3">
+                <div class="col-md-6">
+                    <div class="input-group">
+                        <span class="input-group-text input-group-text-sport"><i class="fa-solid fa-magnifying-glass"></i></span>
+                        <input type="text" class="form-control search-control border-start-0 bg-light" placeholder="Tìm kiếm xe Honda theo từ khóa...">
+                    </div>
+                </div>
+
+                <div class="col-md-3">
+                    <select class="form-select search-control bg-light">
+                        <option>Tất cả dòng xe</option>
+                        <option>Sedan</option>
+                        <option>SUV</option>
+                        <option>MPV</option>
+                    </select>
+                </div>
+
+                <div class="col-md-3">
+                    <button class="btn btn-danger btn-search-sport w-100 fw-bold text-uppercase text-white shadow-sm">
+                        <i class="fa-solid fa-filter me-2"></i> Tìm kiếm ngay
+                    </button>
+                </div>
+            </div>
+        </div>
+    </section>
+
+
+    <!-- DANH SÁCH XE NỔI BẬT -->
+    <section class="py-5">
+        <div class="container">
+            <div class="border-start border-4 border-danger ps-3 mb-4">
+                <h4 class="fw-extrabold text-uppercase text-dark m-0">Sản phẩm nổi bật</h4>
+                <p class="text-muted small m-0">Những dòng xe được tìm kiếm và sở hữu nhiều nhất tại Showroom</p>
+            </div>
+
+            <div class="row g-4">
+
+                <!-- Xe 1: City -->
+                <div class="col-lg-3 col-md-6">
+                    <div class="card h-100 hover-card border-0">
+                        <div class="card-img-container">
+                            <img src="images/city.png" class="img-fluid" alt="Honda City RS">
+                        </div>
+                        <div class="card-body text-center p-4 border-top">
+                            <span class="badge badge-sport bg-light text-danger mb-2">Phân khúc B</span>
+                            <h5 class="fw-bold text-dark mb-2">Honda City RS</h5>
+                            <p class="price-text mb-4">569.000.000 VNĐ</p>
+                            <a href="product-detail.html" class="btn btn-detail-sport w-100">Xem chi tiết</a>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Xe 2: Civic -->
+                <div class="col-lg-3 col-md-6">
+                    <div class="card h-100 hover-card border-0">
+                        <div class="card-img-container">
+                            <img src="images/civic.png" class="img-fluid" alt="Honda Civic RS">
+                        </div>
+                        <div class="card-body text-center p-4 border-top">
+                            <span class="badge badge-sport bg-light text-danger mb-2">Phân khúc C</span>
+                            <h5 class="fw-bold text-dark mb-2">Honda Civic RS</h5>
+                            <p class="price-text mb-4">870.000.000 VNĐ</p>
+                            <a href="product-detail.html" class="btn btn-detail-sport w-100">Xem chi tiết</a>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Xe 3: HRV -->
+                <div class="col-lg-3 col-md-6">
+                    <div class="card h-100 hover-card border-0">
+                        <div class="card-img-container">
+                            <img src="images/hrv.png" class="img-fluid" alt="Honda HR-V">
+                        </div>
+                        <div class="card-body text-center p-4 border-top">
+                            <span class="badge badge-sport bg-light text-success mb-2">Urban SUV</span>
+                            <h5 class="fw-bold text-dark mb-2">Honda HR-V</h5>
+                            <p class="price-text mb-4">699.000.000 VNĐ</p>
+                            <a href="product-detail.html" class="btn btn-detail-sport w-100">Xem chi tiết</a>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Xe 4: CRV -->
+                <div class="col-lg-3 col-md-6">
+                    <div class="card h-100 hover-card border-0">
+                        <div class="card-img-container">
+                            <img src="images/crv.png" class="img-fluid" alt="Honda CR-V">
+                        </div>
+                        <div class="card-body text-center p-4 border-top">
+                            <span class="badge badge-sport bg-light text-primary mb-2">Premium SUV</span>
+                            <h5 class="fw-bold text-dark mb-2">Honda CR-V</h5>
+                            <p class="price-text mb-4">1.259.000.000 VNĐ</p>
+                            <a href="product-detail.html" class="btn btn-detail-sport w-100">Xem chi tiết</a>
+                        </div>
+                    </div>
+                </div>
+
+            </div>
+
+            <!-- Phân Trang Đợt 1 -->
+            <nav class="mt-5">
+                <ul class="pagination pagination-sport justify-content-center">
+                    <li class="page-item active"><a class="page-link" href="#">1</a></li>
+                    <li class="page-item"><a class="page-link" href="#">2</a></li>
+                    <li class="page-item"><a class="page-link" href="#">3</a></li>
+                </ul>
+            </nav>
+        </div>
+    </section>
+
+
+    <!-- DANH SÁCH SẢN PHẨM PHÂN LOẠI CHI TIẾT -->
+    <section class="container py-5 border-top">
+        <div class="row align-items-center mb-4">
+            <div class="col-md-8">
+                <div class="border-start border-4 border-danger ps-3">
+                    <h2 class="fw-extrabold text-dark m-0" style="font-size: 1.8rem;">Các Mẫu Xe Honda Khác</h2>
+                    <p class="text-muted small m-0">Xem và chọn lọc tất cả các phiên bản Honda cao cấp nhất hiện nay</p>
+                </div>
+            </div>
+
+            <div class="col-md-4 mt-3 mt-md-0">
+                <div class="input-group">
+                    <span class="input-group-text input-group-text-sport bg-white"><i class="fa-solid fa-sliders"></i></span>
+                    <select class="form-select search-control border-start-0 py-2.5 bg-white">
+                        <option>Tất cả dòng xe</option>
+                        <option>Sedan</option>
+                        <option>SUV</option>
+                        <option>MPV</option>
+                    </select>
+                </div>
+            </div>
+        </div>
+
+        <div class="row g-4">
+
+            <!-- Xe 1: Honda City RS -->
+            <div class="col-lg-3 col-md-6">
+                <div class="card h-100 hover-card border-0">
+                    <div class="card-img-container">
+                        <img src="images/cityrs.png" class="img-fluid" alt="Honda City RS">
+                    </div>
+                    <div class="card-body text-center p-4 border-top">
+                        <span class="badge badge-sport bg-light text-danger mb-2">Top Sedan B</span>
+                        <h5 class="fw-bold text-dark mb-2">Honda City RS</h5>
+                        <p class="price-text mb-4">569.000.000 VNĐ</p>
+                        <a href="product-detail.html" class="btn btn-detail-sport w-100">Xem chi tiết</a>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Xe 2: Honda Civic RS -->
+            <div class="col-lg-3 col-md-6">
+                <div class="card h-100 hover-card border-0">
+                    <div class="card-img-container">
+                        <img src="images/civicrs.png" class="img-fluid" alt="Honda Civic RS">
+                    </div>
+                    <div class="card-body text-center p-4 border-top">
+                        <span class="badge badge-sport bg-light text-danger mb-2">Sport Sedan C</span>
+                        <h5 class="fw-bold text-dark mb-2">Honda Civic RS</h5>
+                        <p class="price-text mb-4">870.000.000 VNĐ</p>
+                        <a href="product-detail.html" class="btn btn-detail-sport w-100">Xem chi tiết</a>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Xe 3: Honda HR-V G -->
+            <div class="col-lg-3 col-md-6">
+                <div class="card h-100 hover-card border-0">
+                    <div class="card-img-container">
+                        <img src="images/hrvg.png" class="img-fluid" alt="Honda HR-V G">
+                    </div>
+                    <div class="card-body text-center p-4 border-top">
+                        <span class="badge badge-sport bg-light text-success mb-2">B-Segment SUV</span>
+                        <h5 class="fw-bold text-dark mb-2">Honda HR-V G</h5>
+                        <p class="price-text mb-4">699.000.000 VNĐ</p>
+                        <a href="product-detail.html" class="btn btn-detail-sport w-100">Xem chi tiết</a>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Xe 4: Honda CR-V e:HEV RS -->
+            <div class="col-lg-3 col-md-6">
+                <div class="card h-100 hover-card border-0">
+                    <div class="card-img-container">
+                        <img src="images/crve.png" class="img-fluid" alt="Honda CR-V e:HEV RS">
+                    </div>
+                    <div class="card-body text-center p-4 border-top">
+                        <span class="badge badge-sport bg-light text-primary mb-2">Hybrid Tech</span>
+                        <h5 class="fw-bold text-dark mb-2">Honda CR-V e:HEV RS</h5>
+                        <p class="price-text mb-4">1.259.000.000 VNĐ</p>
+                        <a href="product-detail.html" class="btn btn-detail-sport w-100">Xem chi tiết</a>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Xe 5: Honda BR-V G -->
+            <div class="col-lg-3 col-md-6">
+                <div class="card h-100 hover-card border-0">
+                    <div class="card-img-container">
+                        <img src="images/brv2026.png" class="img-fluid" alt="Honda BR-V G">
+                    </div>
+                    <div class="card-body text-center p-4 border-top">
+                        <span class="badge badge-sport bg-light text-warning mb-2">Family SUV 7 chỗ</span>
+                        <h5 class="fw-bold text-dark mb-2">Honda BR-V G</h5>
+                        <p class="price-text mb-4">629.000.000 VNĐ</p>
+                        <a href="product-detail.html" class="btn btn-detail-sport w-100">Xem chi tiết</a>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Xe 6: Honda Accord -->
+            <div class="col-lg-3 col-md-6">
+                <div class="card h-100 hover-card border-0">
+                    <div class="card-img-container">
+                        <img src="images/accord.png" class="img-fluid" alt="Honda Accord">
+                    </div>
+                    <div class="card-body text-center p-4 border-top">
+                        <span class="badge badge-sport bg-light text-dark mb-2">Premium Sedan D</span>
+                        <h5 class="fw-bold text-dark mb-2">Honda Accord</h5>
+                        <p class="price-text mb-4">1.319.000.000 VNĐ</p>
+                        <a href="product-detail.html" class="btn btn-detail-sport w-100">Xem chi tiết</a>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Xe 7: Honda City L -->
+            <div class="col-lg-3 col-md-6">
+                <div class="card h-100 hover-card border-0">
+                    <div class="card-img-container">
+                        <img src="images/cityl.png" class="img-fluid" alt="Honda City L">
+                    </div>
+                    <div class="card-body text-center p-4 border-top">
+                        <span class="badge badge-sport bg-light text-danger mb-2">Standard B-Class</span>
+                        <h5 class="fw-bold text-dark mb-2">Honda City L</h5>
+                        <p class="price-text mb-4">539.000.000 VNĐ</p>
+                        <a href="product-detail.html" class="btn btn-detail-sport w-100">Xem chi tiết</a>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Xe 8: Honda Civic G -->
+            <div class="col-lg-3 col-md-6">
+                <div class="card h-100 hover-card border-0">
+                    <div class="card-img-container">
+                        <img src="images/civicg.png" class="img-fluid" alt="Honda Civic G">
+                    </div>
+                    <div class="card-body text-center p-4 border-top">
+                        <span class="badge badge-sport bg-light text-danger mb-2">Medium C-Class</span>
+                        <h5 class="fw-bold text-dark mb-2">Honda Civic G</h5>
+                        <p class="price-text mb-4">789.000.000 VNĐ</p>
+                        <a href="product-detail.html" class="btn btn-detail-sport w-100">Xem chi tiết</a>
+                    </div>
+                </div>
+            </div>
+
+        </div>
+
+        <!-- Phân Trang Đợt 2 -->
+        <nav class="mt-5">
+            <ul class="pagination pagination-sport justify-content-center">
+                <li class="page-item active"><a class="page-link" href="#">1</a></li>
+                <li class="page-item"><a class="page-link" href="#">2</a></li>
+                <li class="page-item"><a class="page-link" href="#">3</a></li>
+            </ul>
+        </nav>
+
+    </section>
+
+    
+    <!-- ================= FOOTER ================= -->
+    <footer class="bg-dark text-white pt-5 pb-3">
+        <div class="container">
+            <div class="row g-4">
+                <!-- Cột 1: Giới thiệu -->
+                <div class="col-lg-4 col-md-6">
+                    <h5 class="text-uppercase fw-bold text-danger mb-4">Honda Hải Thành</h5>
+                    <p class="text-white-50" style="font-size: 0.9rem; line-height: 1.8;">
+                        Đại lý ủy quyền chính thức của Honda Việt Nam. Chúng tôi cam kết mang lại những sản phẩm chất lượng cao cùng dịch vụ bảo dưỡng, bảo hành tốt nhất cho quý khách hàng.
+                    </p>
+                    <div class="d-flex gap-2 mt-3">
+                        <a href="#" class="btn btn-outline-light btn-sm rounded-circle" style="width: 36px; height: 36px; line-height: 24px;"><i class="fab fa-facebook-f"></i></a>
+                        <a href="#" class="btn btn-outline-light btn-sm rounded-circle" style="width: 36px; height: 36px; line-height: 24px;"><i class="fab fa-youtube"></i></a>
+                        <a href="#" class="btn btn-outline-light btn-sm rounded-circle" style="width: 36px; height: 36px; line-height: 24px;"><i class="fab fa-instagram"></i></a>
+                    </div>
+                </div>
+                <!-- Cột 2: Danh mục nhanh -->
+                <div class="col-lg-2 col-md-6">
+                    <h5 class="text-uppercase fw-bold text-white mb-4" style="font-size: 1rem;">Liên kết nhanh</h5>
+                    <ul class="list-unstyled d-flex flex-column gap-2" style="font-size: 0.9rem;">
+                        <li><a href="index.html" class="text-white-50 text-decoration-none hover-white">Trang chủ</a></li>
+                        <li><a href="product.html" class="text-white-50 text-decoration-none hover-white">Sản phẩm Ôtô</a></li>
+                        <li><a href="post.html" class="text-white-50 text-decoration-none hover-white">Tin tức & Khuyến mãi</a></li>
+                        <li><a href="contact.html" class="text-white-50 text-decoration-none hover-white">Liên hệ</a></li>
+                    </ul>
+                </div>
+                <!-- Cột 3: Chính sách -->
+                <div class="col-lg-3 col-md-6">
+                    <h5 class="text-uppercase fw-bold text-white mb-4" style="font-size: 1rem;">Chính sách hỗ trợ</h5>
+                    <ul class="list-unstyled d-flex flex-column gap-2" style="font-size: 0.9rem;">
+                        <li><a href="#" class="text-white-50 text-decoration-none hover-white">Chính sách bảo hành</a></li>
+                        <li><a href="#" class="text-white-50 text-decoration-none hover-white">Chính sách trả góp 0%</a></li>
+                        <li><a href="#" class="text-white-50 text-decoration-none hover-white">Đăng ký lái thử tại nhà</a></li>
+                        <li><a href="#" class="text-white-50 text-decoration-none hover-white">Chính sách bảo mật thông tin</a></li>
+                    </ul>
+                </div>
+                <!-- Cột 4: Liên hệ -->
+                <div class="col-lg-3 col-md-6">
+                    <h5 class="text-uppercase fw-bold text-white mb-4" style="font-size: 1rem;">Thông tin liên hệ</h5>
+                    <ul class="list-unstyled text-white-50 d-flex flex-column gap-3" style="font-size: 0.9rem;">
+                        <li><i class="fa-solid fa-map-marker-alt text-danger me-2"></i> Khu Công Nghệ Cao, Q. 9, TP. Hồ Chí Minh</li>
+                        <li><i class="fa-solid fa-phone text-danger me-2"></i> 0988.305.473</li>
+                        <li><i class="fa-solid fa-envelope text-danger me-2"></i> hotro@hondahaithanh.com</li>
+                    </ul>
+                </div>
+            </div>
+            <hr class="my-4 border-secondary">
+            <div class="row align-items-center">
+                <div class="col-md-6 text-center text-md-start">
+                    <p class="mb-0 text-white-50" style="font-size: 0.85rem;">
+                        &copy; 2026 Bản quyền thuộc về <strong class="text-white">Phạm Nguyễn Hải Thành</strong>. Tất cả quyền được bảo lưu.
+                    </p>
+                </div>
+                <div class="col-md-6 text-center text-md-end mt-2 mt-md-0">
+                    <p class="mb-0 text-white-50" style="font-size: 0.85rem;">MSSV: [Điền MSSV của bạn]</p>
+                </div>
+            </div>
+        </div>
+    </footer>
+
+
+    <script src="js/bootstrap.bundle.min.js"></script>
+</body>
+</html>

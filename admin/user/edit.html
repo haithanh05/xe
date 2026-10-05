@@ -1,0 +1,145 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Chỉnh sửa người dùng - Hệ thống Quản trị</title>
+    <!-- CSS liên kết từ thư mục gốc (quay lui 2 cấp) -->
+    <link rel="stylesheet" href="../../css/bootstrap.min.css">
+    <link rel="stylesheet" href="../../css/all.min.css">
+    <link rel="stylesheet" href="../../css/hotensv.css">
+
+    <style>
+        /* CSS cố định Sidebar bên trái */
+        @media (min-width: 768px) {
+            .sidebar {
+                position: fixed;
+                top: 0;
+                bottom: 0;
+                left: 0;
+                z-index: 100;
+                height: 100vh;
+                overflow-y: auto; /* Cuộn sidebar độc lập nếu menu quá dài */
+            }
+            
+            /* Đẩy phần nội dung chính sang phải để không bị Sidebar đè lên */
+            main {
+                margin-left: 16.666667%; /* Chiếm đúng độ rộng của col-md-2 */
+            }
+        }
+    </style>
+</head>
+<body class="bg-light">
+
+    <div class="container-fluid">
+        <div class="row">
+            <!-- ================= SIDEBAR BÊN TRÁI ================= -->
+            <nav class="col-md-2 d-none d-md-block bg-dark sidebar py-3">
+                <div class="sidebar-sticky">
+                    <h5 class="text-white text-center mb-4">
+                        <i class="fas fa-user-shield"></i> ADMIN PANEL
+                    </h5>
+                    <ul class="nav flex-column text-white">
+                        <li class="nav-item mb-2">
+                            <!-- Quay lui 1 cấp để ra trang tổng quan admin/index.html -->
+                            <a class="nav-link text-white" href="../index.html">
+                                <i class="fas fa-tachometer-alt"></i> Tổng quan
+                            </a>
+                        </li>
+                        <li class="nav-item mb-2">
+                            <a class="nav-link text-white" href="../category/index.html">
+                                <i class="fas fa-folder"></i> Quản lý danh mục
+                            </a>
+                        </li>
+                        <li class="nav-item mb-2">
+                            <a class="nav-link text-white" href="../product/index.html">
+                                <i class="fas fa-box"></i> Quản lý sản phẩm
+                            </a>
+                        </li>
+                        <li class="nav-item mb-2">
+                            <a class="nav-link text-white" href="../order/index.html">
+                                <i class="fas fa-shopping-cart"></i> Quản lý đơn hàng
+                            </a>
+                        </li>
+                        <li class="nav-item mb-2">
+                            <a class="nav-link text-white" href="../banner/index.html">
+                                <i class="fas fa-images"></i> Quản lý Banner
+                            </a>
+                        </li>
+                        <li class="nav-item mb-2">
+                            <!-- Kích hoạt trạng thái Active màu vàng nổi bật tại đây -->
+                            <a class="nav-link text-warning active fw-bold" href="index.html">
+                                <i class="fas fa-users"></i> Quản lý người dùng
+                            </a>
+                        </li>
+                        <li class="nav-item mt-4">
+                            <!-- Quay lui 2 cấp để về trang chủ index.html của website -->
+                            <a class="nav-link text-danger" href="../../index.html">
+                                <i class="fas fa-sign-out-alt"></i> Xem Website
+                            </a>
+                        </li>
+                    </ul>
+                </div>
+            </nav>
+
+            <!-- ================= NỘI DUNG CHÍNH BÊN PHẢI ================= -->
+            <main role="main" class="col-md-10 px-4 py-3">
+                <div class="d-flex justify-content-between flex-wrap flex-md-nowrap align-items-center pt-3 pb-2 mb-3 border-bottom">
+                    <h1 class="h2">Cập nhật tài khoản</h1>
+                </div>
+
+                <!-- FORM CHỈNH SỬA -->
+                <div class="card shadow border-0 mt-2">
+                    <div class="card-body p-4">
+                        <h2 class="text-danger mb-4">
+                            Chỉnh sửa người dùng
+                        </h2>
+                        
+                        <form>
+                            <div class="mb-3">
+                                <label class="form-label fw-semibold">Họ tên</label>
+                                <input type="text" class="form-control" value="Phạm Nguyễn Hải Thành">
+                            </div>
+
+                            <div class="mb-3">
+                                <label class="form-label fw-semibold">Tài khoản</label>
+                                <input type="text" class="form-control" value="admin">
+                            </div>
+
+                            <div class="mb-3">
+                                <label class="form-label fw-semibold">Mật khẩu</label>
+                                <input type="password" class="form-control" value="123456">
+                            </div>
+
+                            <div class="mb-3">
+                                <label class="form-label fw-semibold">Số điện thoại</label>
+                                <input type="text" class="form-control" value="0988305473">
+                            </div>
+
+                            <div class="mb-3">
+                                <label class="form-label fw-semibold">Quyền</label>
+                                <select class="form-select">
+                                    <option selected>Admin</option>
+                                    <option>Khách hàng</option>
+                                </select>
+                            </div>
+
+                            <!-- Quay lại trang danh sách admin/user/index.html -->
+                            <a href="index.html" class="btn btn-secondary px-4">
+                                Quay lại
+                            </a>
+                            <button type="submit" class="btn btn-danger px-4">
+                                Lưu thay đổi
+                            </button>
+                        </form>
+                    </div>
+                </div>
+            </main>
+        </div>
+    </div>
+
+    <!-- JS liên kết từ thư mục gốc (quay lui 2 cấp) -->
+    <script src="../../js/bootstrap.bundle.min.js"></script>
+    <script src="../../js/main.js"></script>
+</body>
+</html>

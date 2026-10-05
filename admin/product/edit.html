@@ -1,0 +1,191 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Quản lý sản phẩm - Phạm Nguyễn Hải Thành</title>
+    <!-- CSS liên kết từ thư mục gốc (quay lui 2 cấp) -->
+    <link rel="stylesheet" href="../../css/bootstrap.min.css">
+    <link rel="stylesheet" href="../../css/all.min.css">
+    <link rel="stylesheet" href="../../css/hotensv.css">
+
+    <style>
+        /* CSS cố định Sidebar bên trái */
+        @media (min-width: 768px) {
+            .sidebar {
+                position: fixed;
+                top: 0;
+                bottom: 0;
+                left: 0;
+                z-index: 100;
+                height: 100vh;
+                overflow-y: auto; /* Cuộn sidebar độc lập nếu menu quá dài */
+            }
+            
+            /* Đẩy phần nội dung chính sang phải để không bị Sidebar đè lên */
+            main {
+                margin-left: 16.666667%; /* Chiếm đúng độ rộng của col-md-2 */
+            }
+        }
+    </style>
+</head>
+<body class="bg-light">
+
+    <div class="container-fluid">
+        <div class="row">
+            <!-- ================= SIDEBAR BÊN TRÁI ================= -->
+            <nav class="col-md-2 d-none d-md-block bg-dark sidebar py-3">
+                <div class="sidebar-sticky">
+                    <h5 class="text-white text-center mb-4">
+                        <i class="fas fa-user-shield"></i> ADMIN PANEL
+                    </h5>
+                    <ul class="nav flex-column text-white">
+                        <li class="nav-item mb-2">
+                            <!-- Quay lui 1 cấp để ra trang tổng quan admin/index.html -->
+                            <a class="nav-link text-white" href="../index.html">
+                                <i class="fas fa-tachometer-alt"></i> Tổng quan
+                            </a>
+                        </li>
+                        <li class="nav-item mb-2">
+                            <a class="nav-link text-white" href="../category/index.html">
+                                <i class="fas fa-folder"></i> Quản lý danh mục
+                            </a>
+                        </li>
+                        <li class="nav-item mb-2">
+                            <!-- Kích hoạt trạng thái Active màu vàng nổi bật tại đây -->
+                            <a class="nav-link text-warning active fw-bold" href="index.html">
+                                <i class="fas fa-box"></i> Quản lý sản phẩm
+                            </a>
+                        </li>
+                        <li class="nav-item mb-2">
+                            <a class="nav-link text-white" href="../order/index.html">
+                                <i class="fas fa-shopping-cart"></i> Quản lý đơn hàng
+                            </a>
+                        </li>
+                        <li class="nav-item mb-2">
+                            <a class="nav-link text-white" href="../banner/index.html">
+                                <i class="fas fa-images"></i> Quản lý Banner
+                            </a>
+                        </li>
+                        <li class="nav-item mb-2">
+                            <a class="nav-link text-white" href="../user/index.html">
+                                <i class="fas fa-users"></i> Quản lý người dùng
+                            </a>
+                        </li>
+                        <li class="nav-item mt-4">
+                            <!-- Quay lui 2 cấp để về trang chủ index.html của website -->
+                            <a class="nav-link text-danger" href="../../index.html">
+                                <i class="fas fa-sign-out-alt"></i> Xem Website
+                            </a>
+                        </li>
+                    </ul>
+                </div>
+            </nav>
+
+            <!-- ================= NỘI DUNG CHÍNH BÊN PHẢI ================= -->
+            <main role="main" class="col-md-10 px-4 py-3">
+                <!-- TIÊU ĐỀ TRANG VÀ NÚT THÊM MỚI -->
+                <div class="d-flex justify-content-between align-items-center pt-3 pb-2 mb-4 border-bottom">
+                    <h2 class="fw-bold h3 mb-0">
+                        <i class="fa-solid fa-car-side text-danger me-2"></i> Danh sách sản phẩm
+                    </h2>
+                    <a href="create.html" class="btn btn-danger shadow-sm">
+                        <i class="fa-solid fa-plus me-1"></i> Thêm sản phẩm
+                    </a>
+                </div>
+
+                <!-- BẢNG DANH SÁCH SẢN PHẨM -->
+                <div class="card shadow border-0">
+                    <div class="card-body p-4">
+                        <div class="table-responsive">
+                            <table class="table table-bordered table-hover align-middle text-center mb-0">
+                                <thead class="table-danger text-uppercase fs-7">
+                                    <tr>
+                                        <th style="width: 5%">STT</th>
+                                        <th style="width: 25%">Ảnh xe</th>
+                                        <th style="width: 25%">Tên xe</th>
+                                        <th style="width: 10%">Danh mục</th>
+                                        <th style="width: 15%">Giá bán</th>
+                                        <th style="width: 10%">Trạng thái</th>
+                                        <th style="width: 10%">Thao tác</th>
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                    <tr>
+                                        <td>1</td>
+                                        <td>
+                                            <img src="../../images/crv.png" class="img-fluid rounded shadow-sm" style="width:220px;height:110px;object-fit:cover;">
+                                        </td>
+                                        <td class="fw-bold text-start ps-3">Honda CR-V e:HEV RS</td>
+                                        <td><span class="badge bg-secondary px-2 py-1">SUV</span></td>
+                                        <td class="text-danger fw-bold">1.109.000.000đ</td>
+                                        <td><span class="badge bg-success">Đang bán</span></td>
+                                        <td>
+                                            <div class="d-flex justify-content-center gap-1">
+                                                <a href="edit.html" class="btn btn-warning btn-sm px-3">Sửa</a> 
+                                                <button class="btn btn-danger btn-sm px-3">Xóa</button>
+                                            </div>
+                                        </td>
+                                    </tr>
+                                    <tr>
+                                        <td>2</td>
+                                        <td>
+                                            <img src="../../images/civic.png" class="img-fluid rounded shadow-sm" style="width:220px;height:110px;object-fit:cover;">
+                                        </td>
+                                        <td class="fw-bold text-start ps-3">Honda Civic RS</td>
+                                        <td><span class="badge bg-secondary px-2 py-1">Sedan</span></td>
+                                        <td class="text-danger fw-bold">870.000.000đ</td>
+                                        <td><span class="badge bg-success">Đang bán</span></td>
+                                        <td>
+                                            <div class="d-flex justify-content-center gap-1">
+                                                <a href="edit.html" class="btn btn-warning btn-sm px-3">Sửa</a> 
+                                                <button class="btn btn-danger btn-sm px-3">Xóa</button>
+                                            </div>
+                                        </td>
+                                    </tr>
+                                    <tr>
+                                        <td>3</td>
+                                        <td>
+                                            <img src="../../images/city.png" class="img-fluid rounded shadow-sm" style="width:220px;height:110px;object-fit:cover;">
+                                        </td>
+                                        <td class="fw-bold text-start ps-3">Honda City RS</td>
+                                        <td><span class="badge bg-secondary px-2 py-1">Sedan</span></td>
+                                        <td class="text-danger fw-bold">599.000.000đ</td>
+                                        <td><span class="badge bg-success">Đang bán</span></td>
+                                        <td>
+                                            <div class="d-flex justify-content-center gap-1">
+                                                <a href="edit.html" class="btn btn-warning btn-sm px-3">Sửa</a> 
+                                                <button class="btn btn-danger btn-sm px-3">Xóa</button>
+                                            </div>
+                                        </td>
+                                    </tr>
+                                    <tr>
+                                        <td>4</td>
+                                        <td>
+                                            <img src="../../images/hrv.png" class="img-fluid rounded shadow-sm" style="width:220px;height:110px;object-fit:cover;">
+                                        </td>
+                                        <td class="fw-bold text-start ps-3">Honda HR-V G</td>
+                                        <td><span class="badge bg-secondary px-2 py-1">SUV</span></td>
+                                        <td class="text-danger fw-bold">699.000.000đ</td>
+                                        <td><span class="badge bg-success">Đang bán</span></td>
+                                        <td>
+                                            <div class="d-flex justify-content-center gap-1">
+                                                <a href="edit.html" class="btn btn-warning btn-sm px-3">Sửa</a> 
+                                                <button class="btn btn-danger btn-sm px-3">Xóa</button>
+                                            </div>
+                                        </td>
+                                    </tr>
+                                </tbody>
+                            </table>
+                        </div>
+                    </div>
+                </div>
+            </main>
+        </div>
+    </div>
+
+    <!-- JS liên kết từ thư mục gốc (quay lui 2 cấp) -->
+    <script src="../../js/bootstrap.bundle.min.js"></script>
+    <script src="../../js/main.js"></script>
+</body>
+</html>

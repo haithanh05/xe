@@ -1,0 +1,543 @@
+<!DOCTYPE html>
+<html lang="vi">
+
+<head>
+
+    <meta charset="UTF-8">
+
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>banner - Phạm Nguyễn Hải Thành</title>
+
+    <link rel="stylesheet" href="../../css/bootstrap.min.css">
+    <link rel="stylesheet" href="../../css/all.min.css">
+    <link rel="stylesheet" href="../../css/hotensv.css">
+
+    <style>
+        /* CSS cố định Sidebar bên trái */
+        @media (min-width: 768px) {
+            .sidebar {
+                position: fixed;
+                top: 0;
+                bottom: 0;
+                left: 0;
+                z-index: 100;
+                height: 100vh;
+                overflow-y: auto; /* Cuộn riêng sidebar nếu menu quá dài */
+            }
+            
+            /* Đẩy nội dung bên phải sang để không bị Sidebar đè lên */
+            main {
+                margin-left: 16.666667%; /* Tương đương độ rộng col-md-2 */
+            }
+        }
+    </style>
+
+</head>
+
+<body class="bg-light">
+
+<div class="container-fluid">
+    <div class="row">
+
+        <!-- Sidebar -->
+        <nav class="col-md-2 d-none d-md-block bg-dark sidebar py-3">
+            <div class="sidebar-sticky">
+                <h5 class="text-white text-center mb-4">
+                    <i class="fas fa-user-shield"></i> ADMIN PANEL
+                </h5>
+
+                <ul class="nav flex-column text-white">
+
+                    <li class="nav-item mb-2">
+                        <a class="nav-link text-white" href="../index.html">
+                            <i class="fas fa-tachometer-alt"></i> Tổng quan
+                        </a>
+                    </li>
+
+                    <li class="nav-item mb-2">
+                        <a class="nav-link text-white" href="../category/index.html">
+                            <i class="fas fa-folder"></i> Quản lý danh mục
+                        </a>
+                    </li>
+
+                    <li class="nav-item mb-2">
+                        <a class="nav-link text-white" href="../product/index.html">
+                            <i class="fas fa-box"></i> Quản lý sản phẩm
+                        </a>
+                    </li>
+
+                    <li class="nav-item mb-2">
+                        <a class="nav-link text-white" href="../order/index.html">
+                            <i class="fas fa-shopping-cart"></i> Quản lý đơn hàng
+                        </a>
+                    </li>
+
+                    <li class="nav-item mb-2">
+                        <a class="nav-link text-warning active fw-bold" href="../banner/index.html">
+                            <i class="fas fa-images"></i> Quản lý Banner
+                        </a>
+                    </li>
+
+                    <li class="nav-item mb-2">
+                        <a class="nav-link text-white" href="../user/index.html">
+                            <i class="fas fa-users"></i> Quản lý người dùng
+                        </a>
+                    </li>
+
+                    <li class="nav-item mt-4">
+                        <a class="nav-link text-danger" href="../../index.html">
+                            <i class="fas fa-sign-out-alt"></i> Xem Website
+                        </a>
+                    </li>
+
+                </ul>
+            </div>
+        </nav>
+
+        <!-- Nội dung -->
+        <main class="col-md-10 p-4">
+<!-- ================= CONTENT ================= -->
+
+<div class="container py-5">
+
+    <div class="card shadow-lg border-0">
+
+        <div class="card-header bg-danger text-white d-flex justify-content-between align-items-center">
+
+            <h3 class="mb-0">
+
+                <i class="fa-solid fa-images"></i>
+
+                Quản lý Banner
+
+            </h3>
+
+            <div>
+
+                <a href="../index.html"
+                   class="btn btn-light me-2">
+
+                    <i class="fa-solid fa-house"></i>
+
+                    Admin
+
+                </a>
+
+                <a href="create.html"
+                   class="btn btn-warning">
+
+                    <i class="fa-solid fa-plus"></i>
+
+                    Thêm Banner
+
+                </a>
+
+            </div>
+
+        </div>
+
+        <div class="card-body">
+
+            <div class="table-responsive">
+
+                <table class="table table-hover table-bordered align-middle text-center">
+
+                    <thead class="table-danger">
+
+                        <tr>
+
+                            <th width="70">STT</th>
+
+                            <th width="220">Hình ảnh</th>
+
+                            <th>Tên Banner</th>
+
+                            <th>Tiêu đề</th>
+
+                            <th>Trạng thái</th>
+
+                            <th width="220">Thao tác</th>
+
+                        </tr>
+
+                    </thead>
+
+                    <tbody>                        <tr>
+
+                      <td>1</td>
+
+                      <td>
+
+                          <img src="../../images/banner1.jpg"
+                               class="img-fluid rounded shadow"
+                               style="width:220px;height:110px;object-fit:cover;">
+
+                      </td>
+
+                      <td>Banner Trang chủ</td>
+
+                      <td>
+
+                          HONDA CR-V e:HEV RS
+
+                      </td>
+
+                      <td>
+
+                          <span class="badge bg-success">
+
+                              Hiển thị
+
+                          </span>
+
+                      </td>
+
+                      <td>
+
+                          <a href="edit.html"
+                             class="btn btn-warning btn-sm">
+
+                              <i class="fa-solid fa-pen"></i>
+
+                              Sửa
+
+                          </a>
+
+                          <button class="btn btn-danger btn-sm">
+
+                              <i class="fa-solid fa-trash"></i>
+
+                              Xóa
+
+                          </button>
+
+                      </td>
+
+                  </tr>
+
+                  <tr>
+
+                      <td>2</td>
+
+                      <td>
+
+                          <img src="../../images/banner2.jpg"
+                               class="img-fluid rounded shadow"
+                               style="width:220px;height:110px;object-fit:cover;">
+
+                      </td>
+
+                      <td>Banner Honda Civic</td>
+
+                      <td>
+
+                          HONDA CIVIC RS
+
+                      </td>
+
+                      <td>
+
+                          <span class="badge bg-success">
+
+                              Hiển thị
+
+                          </span>
+
+                      </td>
+
+                      <td>
+
+                          <a href="edit.html"
+                             class="btn btn-warning btn-sm">
+
+                              <i class="fa-solid fa-pen"></i>
+
+                              Sửa
+
+                          </a>
+
+                          <button class="btn btn-danger btn-sm">
+
+                              <i class="fa-solid fa-trash"></i>
+
+                              Xóa
+
+                          </button>
+
+                      </td>
+
+                  </tr>
+
+                  <tr>
+
+                      <td>3</td>
+
+                      <td>
+
+                          <img src="../../images/banner3.jpg"
+                               class="img-fluid rounded shadow"
+                               style="width:220px;height:110px;object-fit:cover;">
+
+                      </td>
+
+                      <td>Banner Honda City</td>
+
+                      <td>
+
+                          HONDA CITY
+
+                      </td>
+
+                      <td>
+
+                          <span class="badge bg-secondary">
+
+                              Ẩn
+
+                          </span>
+
+                      </td>
+
+                      <td>
+
+                          <a href="edit.html"
+                             class="btn btn-warning btn-sm">
+
+                              <i class="fa-solid fa-pen"></i>
+
+                              Sửa
+
+                          </a>
+
+                          <button class="btn btn-danger btn-sm">
+
+                              <i class="fa-solid fa-trash"></i>
+
+                              Xóa
+
+                          </button>
+
+                      </td>
+
+                  </tr>
+
+                  <!-- Banner 4 -->
+                  <tr>
+                      <td>4</td>
+                      <td>
+                          <img src="../../images/hrv.png" 
+                               class="img-fluid rounded shadow" 
+                               style="width:220px;height:110px;object-fit:cover;">
+                      </td>
+                      <td>Banner Honda HR-V</td>
+                      <td>
+                          HONDA HR-V RS
+                      </td>
+                      <td>
+                          <span class="badge bg-success">
+                              Hiển thị
+                          </span>
+                      </td>
+                      <td>
+                          <a href="edit.html" class="btn btn-warning btn-sm">
+                              <i class="fa-solid fa-pen"></i> Sửa
+                          </a>
+                          <button class="btn btn-danger btn-sm">
+                              <i class="fa-solid fa-trash"></i> Xóa
+                          </button>
+                      </td>
+                  </tr>
+
+                  <!-- Banner 5 -->
+                  <tr>
+                      <td>5</td>
+                      <td>
+                          <img src="../../images/brv2026.png" 
+                               class="img-fluid rounded shadow" 
+                               style="width:220px;height:110px;object-fit:cover;">
+                      </td>
+                      <td>Banner Honda BR-V</td>
+                      <td>
+                          HONDA BR-V
+                      </td>
+                      <td>
+                          <span class="badge bg-success">
+                              Hiển thị
+                          </span>
+                      </td>
+                      <td>
+                          <a href="edit.html" class="btn btn-warning btn-sm">
+                              <i class="fa-solid fa-pen"></i> Sửa
+                          </a>
+                          <button class="btn btn-danger btn-sm">
+                              <i class="fa-solid fa-trash"></i> Xóa
+                          </button>
+                      </td>
+                  </tr>
+
+                  <!-- Banner 6 -->
+                  <tr>
+                      <td>6</td>
+                      <td>
+                          <img src="../../images/accord.png" 
+                               class="img-fluid rounded shadow" 
+                               style="width:220px;height:110px;object-fit:cover;">
+                      </td>
+                      <td>Banner Honda Accord</td>
+                      <td>
+                          HONDA ACCORD
+                      </td>
+                      <td>
+                          <span class="badge bg-secondary">
+                              Ẩn
+                          </span>
+                      </td>
+                      <td>
+                          <a href="edit.html" class="btn btn-warning btn-sm">
+                              <i class="fa-solid fa-pen"></i> Sửa
+                          </a>
+                          <button class="btn btn-danger btn-sm">
+                              <i class="fa-solid fa-trash"></i> Xóa
+                          </button>
+                      </td>
+                  </tr>
+
+                  <!-- Banner 7 -->
+                  <tr>
+                      <td>7</td>
+                      <td>
+                          <img src="../../images/crv.png" 
+                               class="img-fluid rounded shadow" 
+                               style="width:220px;height:110px;object-fit:cover;">
+                      </td>
+                      <td>Banner Honda CR-V L</td>
+                      <td>
+                          HONDA CR-V L
+                      </td>
+                      <td>
+                          <span class="badge bg-success">
+                              Hiển thị
+                          </span>
+                      </td>
+                      <td>
+                          <a href="edit.html" class="btn btn-warning btn-sm">
+                              <i class="fa-solid fa-pen"></i> Sửa
+                          </a>
+                          <button class="btn btn-danger btn-sm">
+                              <i class="fa-solid fa-trash"></i> Xóa
+                          </button>
+                      </td>
+                  </tr>
+
+                  <!-- Banner 8 -->
+                  <tr>
+                      <td>8</td>
+                      <td>
+                          <img src="../../images/cityrs.png" 
+                               class="img-fluid rounded shadow" 
+                               style="width:220px;height:110px;object-fit:cover;">
+                      </td>
+                      <td>Banner Honda City RS</td>
+                      <td>
+                          HONDA CITY RS 2026
+                      </td>
+                      <td>
+                          <span class="badge bg-success">
+                              Hiển thị
+                          </span>
+                      </td>
+                      <td>
+                          <a href="edit.html" class="btn btn-warning btn-sm">
+                              <i class="fa-solid fa-pen"></i> Sửa
+                          </a>
+                          <button class="btn btn-danger btn-sm">
+                              <i class="fa-solid fa-trash"></i> Xóa
+                          </button>
+                      </td>
+                  </tr>
+
+                  <!-- Banner 9 -->
+                  <tr>
+                      <td>9</td>
+                      <td>
+                          <img src="../../images/civicrs.png" 
+                               class="img-fluid rounded shadow" 
+                               style="width:220px;height:110px;object-fit:cover;">
+                      </td>
+                      <td>Banner Honda Civic RS</td>
+                      <td>
+                          HONDA CIVIC RS
+                      </td>
+                      <td>
+                          <span class="badge bg-secondary">
+                              Ẩn
+                          </span>
+                      </td>
+                      <td>
+                          <a href="edit.html" class="btn btn-warning btn-sm">
+                              <i class="fa-solid fa-pen"></i> Sửa
+                          </a>
+                          <button class="btn btn-danger btn-sm">
+                              <i class="fa-solid fa-trash"></i> Xóa
+                          </button>
+                      </td>
+                  </tr>
+
+              </tbody>
+
+          </table>
+
+      </div>
+
+  </div>
+
+  <div class="card-footer d-flex justify-content-between align-items-center">
+
+      <span class="text-muted">
+
+          Tổng số banner:
+          <strong>9</strong>
+
+      </span>
+
+      <div>
+
+          <a href="../../index.html"
+             class="btn btn-outline-primary">
+
+              <i class="fa-solid fa-globe"></i>
+
+              Website
+
+          </a>
+
+          <a href="../index.html"
+             class="btn btn-outline-dark">
+
+              <i class="fa-solid fa-gauge-high"></i>
+
+              Trang Admin
+
+          </a>
+
+      </div>
+
+  </div>
+
+</div>
+
+</div>
+
+        </main> <!-- Đóng thẻ main -->
+
+    </div> <!-- Đóng thẻ row -->
+</div> <!-- Đóng thẻ container-fluid -->
+
+<script src="../../js/bootstrap.bundle.min.js"></script>
+
+<script src="../../js/main.js"></script>
+
+</body>
+
+</html>

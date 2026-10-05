@@ -1,0 +1,707 @@
+*{
+    margin:0;
+    padding:0;
+    box-sizing:border-box;
+    font-family:'Poppins',sans-serif;
+}
+
+body{
+    background:#f8f9fa;
+}
+
+.top-header{
+    background:#111;
+    color:#fff;
+    font-size:14px;
+    padding:10px 0;
+}
+
+.top-header a{
+    color:#fff;
+    text-decoration:none;
+    transition:.3s;
+}
+
+.top-header a:hover{
+    color:#dc3545;
+}
+
+.top-header i{
+    color:#dc3545;
+}
+
+.navbar-brand h4{
+    font-size:24px;
+}
+
+.nav-link{
+    font-weight:500;
+    margin:0 10px;
+    transition:.3s;
+}
+
+.nav-link:hover{
+    color:#dc3545!important;
+}
+
+.nav-link.active{
+    color:#dc3545!important;
+}
+
+.btn-danger{
+    border-radius:30px;
+    padding:10px 25px;
+}
+/* ================= HERO ================= */
+
+.hero{
+
+    margin-bottom:70px;
+
+}
+
+.hero-img{
+
+    height:720px;
+
+    object-fit:cover;
+
+    filter:brightness(60%);
+
+}
+
+.carousel-caption{
+
+    bottom:22%;
+
+    text-align:left;
+
+}
+
+.carousel-caption h5{
+
+    color:#ffffff;
+
+    letter-spacing:4px;
+
+    font-size:20px;
+
+    margin-bottom:20px;
+
+}
+
+.carousel-caption h1{
+
+    font-size:60px;
+
+    font-weight:700;
+
+    margin-bottom:20px;
+
+}
+
+.carousel-caption p{
+
+    font-size:20px;
+
+    width:60%;
+
+    margin-bottom:30px;
+
+}
+
+.carousel-caption .btn{
+
+    border-radius:40px;
+
+    padding:12px 35px;
+
+}
+
+.carousel-control-prev,
+
+.carousel-control-next{
+
+    width:6%;
+
+}
+
+@media(max-width:992px){
+
+.hero-img{
+
+height:500px;
+
+}
+
+.carousel-caption{
+
+bottom:10%;
+
+}
+
+.carousel-caption h1{
+
+font-size:35px;
+
+}
+
+.carousel-caption p{
+
+width:100%;
+
+font-size:16px;
+
+}
+
+}
+/*================ ABOUT =================*/
+
+.about{
+
+    background:white;
+
+}
+
+.about h2{
+
+    font-size:42px;
+
+}
+
+.feature-box{
+
+    background:#fff;
+
+    border-radius:15px;
+
+    padding:25px;
+
+    transition:.4s;
+
+    box-shadow:0 5px 20px rgba(0,0,0,.08);
+
+    height:100%;
+
+}
+
+.feature-box:hover{
+
+    transform:translateY(-8px);
+
+}
+
+.feature-box i{
+
+    font-size:35px;
+
+    color:#c3002f;
+
+    margin-bottom:15px;
+
+}
+
+.feature-box h5{
+
+    font-weight:600;
+
+}
+
+.feature-box p{
+
+    color:#777;
+
+    margin-bottom:0;
+
+}
+/*================ XE NOI BAT =================*/
+
+.featured-car{
+
+    background:#f5f5f5;
+
+}
+
+.car-card{
+
+    background:white;
+
+    border-radius:20px;
+
+    overflow:hidden;
+
+    box-shadow:0 10px 30px rgba(0,0,0,.08);
+
+    transition:.4s;
+
+}
+
+.car-card:hover{
+
+    transform:translateY(-10px);
+
+    box-shadow:0 20px 40px rgba(0,0,0,.15);
+
+}
+
+.car-card img{
+
+    height:220px;
+
+    width:100%;
+
+    object-fit:contain;
+
+    transition:.5s;
+
+    padding:20px;
+
+}
+
+.car-card:hover img{
+
+    transform:scale(1.08);
+
+}
+
+.car-card h4{
+
+    font-weight:700;
+
+}
+
+.price{
+
+    color:#c3002f;
+
+    font-weight:700;
+
+    display:block;
+
+    margin:15px 0;
+
+}
+
+.car-card ul{
+
+    list-style:none;
+
+    padding:0;
+
+}
+
+.car-card li{
+
+    margin-bottom:10px;
+
+    color:#666;
+
+}
+
+.car-card i{
+
+    color:#c3002f;
+
+    width:25px;
+
+}
+/*================ SERVICE =================*/
+
+.service{
+
+    background:#ffffff;
+
+}
+
+.service-card{
+
+    background:#fff;
+
+    border-radius:20px;
+
+    padding:40px 25px;
+
+    text-align:center;
+
+    box-shadow:0 10px 30px rgba(0,0,0,.08);
+
+    transition:.4s;
+
+    height:100%;
+
+}
+
+.service-card:hover{
+
+    background:#c3002f;
+
+    color:white;
+
+    transform:translateY(-10px);
+
+}
+
+.service-card:hover p{
+
+    color:#fff;
+
+}
+
+.service-card i{
+
+    font-size:55px;
+
+    color:#c3002f;
+
+    margin-bottom:25px;
+
+    transition:.4s;
+
+}
+
+.service-card:hover i{
+
+    color:white;
+
+}
+
+.service-card h4{
+
+    margin-bottom:15px;
+
+    font-weight:700;
+
+}
+
+.service-card p{
+
+    color:#777;
+
+    margin:0;
+
+}
+/*================ WHY US =================*/
+
+.why-us{
+
+    background:#c3002f;
+
+}
+
+.counter-box{
+
+    color:white;
+
+}
+
+.counter-box i{
+
+    font-size:55px;
+
+    margin-bottom:20px;
+
+}
+
+.counter-box h2{
+
+    font-size:45px;
+
+    font-weight:bold;
+
+}
+
+.counter-box p{
+
+    font-size:18px;
+
+    margin:0;
+
+}
+/* ==========================
+   HONDA VIỆT NAM
+========================== */
+
+body{
+    font-family: Arial, Helvetica, sans-serif;
+    background:#f8f9fa;
+}
+
+a{
+    text-decoration:none;
+    transition:.3s;
+}
+
+img{
+    max-width:100%;
+}
+
+/* Banner */
+
+section.bg-danger{
+    background:#c00000 !important;
+}
+
+/* Tiêu đề */
+
+h1,h2,h3,h4,h5{
+    font-weight:700;
+}
+
+/* Card */
+
+.card{
+    border:none;
+    border-radius:12px;
+    overflow:hidden;
+    transition:.3s;
+}
+
+.card:hover{
+    transform:translateY(-8px);
+    box-shadow:0 12px 25px rgba(0,0,0,.15);
+}
+
+.card img{
+    height:220px;
+    object-fit:cover;
+    transition:.4s;
+}
+
+.card:hover img{
+    transform:scale(1.05);
+}
+
+/* Button */
+
+.btn-danger{
+    background:#c00000;
+    border:none;
+}
+
+.btn-danger:hover{
+    background:#990000;
+}
+
+.btn-outline-danger{
+    color:#c00000;
+    border-color:#c00000;
+}
+
+.btn-outline-danger:hover{
+    background:#c00000;
+}
+
+/* Form */
+
+.form-control,
+.form-select{
+    border-radius:8px;
+}
+
+.form-control:focus,
+.form-select:focus{
+    border-color:#c00000;
+    box-shadow:0 0 0 .15rem rgba(192,0,0,.2);
+}
+
+/* Table */
+
+.table th{
+    vertical-align:middle;
+}
+
+.table td{
+    vertical-align:middle;
+}
+
+/* Pagination */
+
+.page-link{
+    color:#c00000;
+}
+
+.page-item.active .page-link{
+    background:#c00000;
+    border-color:#c00000;
+}
+
+/* Footer */
+
+footer{
+    background:#111;
+    color:white;
+}
+
+footer a{
+    color:#ddd;
+}
+
+footer a:hover{
+    color:white;
+}
+
+/* Responsive */
+
+@media(max-width:768px){
+
+    .card img{
+        height:180px;
+    }
+
+    h1{
+        font-size:28px;
+    }
+
+    h2{
+        font-size:24px;
+    }
+
+}
+/* Back To Top */
+
+#backTop{
+
+    position:fixed;
+
+    right:25px;
+
+    bottom:25px;
+
+    width:50px;
+
+    height:50px;
+
+    display:none;
+
+    border-radius:50%;
+
+    z-index:999;
+
+}
+/* =========================
+MENU ACTIVE
+========================= */
+
+.navbar .nav-link{
+
+    color:#222;
+
+    font-weight:600;
+
+    transition:.3s;
+
+}
+
+.navbar .nav-link:hover{
+
+    color:#c00000;
+
+}
+
+.navbar .nav-link.active{
+
+    color:#c00000 !important;
+
+}
+
+/* =========================
+PRODUCT
+========================= */
+
+.card-body h5{
+
+    min-height:55px;
+
+}
+
+.card-body{
+
+    text-align:center;
+
+}
+
+.card img{
+
+    background:#fff;
+
+}
+
+/* =========================
+TABLE
+========================= */
+
+.table img{
+
+    border-radius:10px;
+
+}
+/* Nút về trang chủ profile */
+
+.home-btn{
+
+    display:inline-flex;
+
+    align-items:center;
+
+    gap:8px;
+
+    text-decoration:none;
+
+    background:#dc3545;
+
+    color:white;
+
+    padding:10px 22px;
+
+    border-radius:30px;
+
+    font-weight:500;
+
+    transition:.3s;
+
+}
+
+
+.home-btn:hover{
+
+    background:#b02a37;
+
+    color:white;
+
+    transform:translateY(-2px);
+
+}
+.admin-btn{
+
+    display:inline-flex;
+
+    align-items:center;
+
+    gap:8px;
+
+    text-decoration:none;
+
+    background:#212529;
+
+    color:white;
+
+    padding:10px 22px;
+
+    border-radius:30px;
+
+    font-weight:500;
+
+    margin-left:10px;
+
+    transition:.3s;
+
+}
+
+
+.admin-btn:hover{
+
+    background:#000;
+
+    color:white;
+
+}

@@ -1,0 +1,419 @@
+<!DOCTYPE html>
+<html lang="vi">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Quản lý đơn hàng - Phạm Nguyễn Hải Thành</title>
+    <link rel="stylesheet" href="../../css/bootstrap.min.css">
+    <link rel="stylesheet" href="../../css/all.min.css">
+    <link rel="stylesheet" href="../../css/hotensv.css">
+</head>
+
+<body>
+
+<div class="container-fluid">
+    <div class="row">
+
+        <!-- Sidebar cố định hoàn toàn bên trái -->
+        <nav class="col-md-2 d-none d-md-block bg-dark py-3 position-fixed top-0 start-0" style="height: 100vh; overflow-y: auto; z-index: 1000;">
+            <div class="sidebar-sticky">
+                <h5 class="text-white text-center mb-4">
+                    <i class="fas fa-user-shield"></i> ADMIN PANEL
+                </h5>
+
+                <ul class="nav flex-column text-white">
+
+                    <li class="nav-item mb-2">
+                        <a class="nav-link text-white" href="../index.html">
+                            <i class="fas fa-tachometer-alt"></i> Tổng quan
+                        </a>
+                    </li>
+
+                    <li class="nav-item mb-2">
+                        <a class="nav-link text-white" href="../category/index.html">
+                            <i class="fas fa-folder"></i> Quản lý danh mục
+                        </a>
+                    </li>
+
+                    <li class="nav-item mb-2">
+                        <a class="nav-link text-white" href="../product/index.html">
+                            <i class="fas fa-box"></i> Quản lý sản phẩm
+                        </a>
+                    </li>
+
+                    <li class="nav-item mb-2">
+                        <a class="nav-link text-warning active" href="../order/index.html">
+                            <i class="fas fa-shopping-cart"></i> Quản lý đơn hàng
+                        </a>
+                    </li>
+
+                    <li class="nav-item mb-2">
+                        <a class="nav-link text-white" href="../banner/index.html">
+                            <i class="fas fa-images"></i> Quản lý Banner
+                        </a>
+                    </li>
+
+                    <li class="nav-item mb-2">
+                        <a class="nav-link text-white" href="../user/index.html">
+                            <i class="fas fa-users"></i> Quản lý người dùng
+                        </a>
+                    </li>
+
+                    <li class="nav-item mt-4">
+                        <a class="nav-link text-danger" href="../../index.html">
+                            <i class="fas fa-sign-out-alt"></i> Xem Website
+                        </a>
+                    </li>
+
+                </ul>
+            </div>
+        </nav>
+
+        <!-- Nội dung (Dịch lùi sang phải col-md-10 để tránh đè cột) -->
+        <main class="col-md-10 offset-md-2 p-4">
+
+            <!-- ================= CONTENT ================= -->
+
+            <div class="container-fluid py-4">
+                <div class="card shadow">
+                    
+                    <div class="card-header bg-info text-white d-flex align-items-center py-3">
+                        <h5 class="mb-0 fw-bold">
+                            <i class="fas fa-list me-2"></i> Toàn bộ đơn hàng hệ thống
+                        </h5>
+                    </div>
+
+                    <div class="card-body p-0">
+                        <div class="table-responsive">
+                            <table class="table table-hover table-bordered mb-0 align-middle text-center">
+                                
+                                <thead class="table-light text-secondary fw-semibold">
+                                    <tr>
+                                        <th width="120">Mã đơn</th>
+                                        <th>Khách hàng</th>
+                                        <th>Số điện thoại</th>
+                                        <th width="180">Trạng thái</th>
+                                        <th width="150">Thao tác</th>
+                                    </tr>
+                                </thead>
+
+                                <tbody>
+                                    
+                                    <!-- Đơn hàng 1 -->
+                                    <tr>
+                                        <td class="fw-bold text-primary">#DH001</td>
+                                        <td>Liễu Như Yên</td>
+                                        <td>0988305473</td>
+                                        <td>
+                                            <span class="badge bg-warning text-dark px-2 py-1">Chờ duyệt</span>
+                                        </td>
+                                        <td>
+                                            <a href="detail.html" class="btn btn-sm btn-dark">
+                                                <i class="fas fa-search-plus"></i> Chi tiết
+                                            </a>
+                                        </td>
+                                    </tr>
+
+                                    <!-- Đơn hàng 2 -->
+                                    <tr>
+                                        <td class="fw-bold text-primary">#DH002</td>
+                                        <td>Nguyễn Minh Triết</td>
+                                        <td>0912345678</td>
+                                        <td>
+                                            <span class="badge bg-success px-2 py-1">Đã giao</span>
+                                        </td>
+                                        <td>
+                                            <a href="detail.html" class="btn btn-sm btn-dark">
+                                                <i class="fas fa-search-plus"></i> Chi tiết
+                                            </a>
+                                        </td>
+                                    </tr>
+
+                                    <!-- Đơn hàng 3 -->
+                                    <tr>
+                                        <td class="fw-bold text-primary">#DH003</td>
+                                        <td>Trần Thị Mai Anh</td>
+                                        <td>0987654321</td>
+                                        <td>
+                                            <span class="badge bg-info text-dark px-2 py-1">Đang giao</span>
+                                        </td>
+                                        <td>
+                                            <a href="detail.html" class="btn btn-sm btn-dark">
+                                                <i class="fas fa-search-plus"></i> Chi tiết
+                                            </a>
+                                        </td>
+                                    </tr>
+
+                                    <!-- Đơn hàng 4 -->
+                                    <tr>
+                                        <td class="fw-bold text-primary">#DH004</td>
+                                        <td>Lê Hoàng Nam</td>
+                                        <td>0905123456</td>
+                                        <td>
+                                            <span class="badge bg-warning text-dark px-2 py-1">Chờ duyệt</span>
+                                        </td>
+                                        <td>
+                                            <a href="detail.html" class="btn btn-sm btn-dark">
+                                                <i class="fas fa-search-plus"></i> Chi tiết
+                                            </a>
+                                        </td>
+                                    </tr>
+
+                                    <!-- Đơn hàng 5 -->
+                                    <tr>
+                                        <td class="fw-bold text-primary">#DH005</td>
+                                        <td>Phạm Hồng Đăng</td>
+                                        <td>0934567890</td>
+                                        <td>
+                                            <span class="badge bg-danger px-2 py-1">Đã hủy</span>
+                                        </td>
+                                        <td>
+                                            <a href="detail.html" class="btn btn-sm btn-dark">
+                                                <i class="fas fa-search-plus"></i> Chi tiết
+                                            </a>
+                                        </td>
+                                    </tr>
+
+                                    <!-- Đơn hàng 6 -->
+                                    <tr>
+                                        <td class="fw-bold text-primary">#DH006</td>
+                                        <td>Vũ Khánh Huyền</td>
+                                        <td>0977888999</td>
+                                        <td>
+                                            <span class="badge bg-success px-2 py-1">Đã giao</span>
+                                        </td>
+                                        <td>
+                                            <a href="detail.html" class="btn btn-sm btn-dark">
+                                                <i class="fas fa-search-plus"></i> Chi tiết
+                                            </a>
+                                        </td>
+                                    </tr>
+
+                                    <!-- Đơn hàng 7 -->
+                                    <tr>
+                                        <td class="fw-bold text-primary">#DH007</td>
+                                        <td>Phan Văn Trường</td>
+                                        <td>0966111222</td>
+                                        <td>
+                                            <span class="badge bg-info text-dark px-2 py-1">Đang giao</span>
+                                        </td>
+                                        <td>
+                                            <a href="detail.html" class="btn btn-sm btn-dark">
+                                                <i class="fas fa-search-plus"></i> Chi tiết
+                                            </a>
+                                        </td>
+                                    </tr>
+
+                                    <!-- Đơn hàng 8 -->
+                                    <tr>
+                                        <td class="fw-bold text-primary">#DH008</td>
+                                        <td>Đỗ Thùy Chi</td>
+                                        <td>0911222333</td>
+                                        <td>
+                                            <span class="badge bg-warning text-dark px-2 py-1">Chờ duyệt</span>
+                                        </td>
+                                        <td>
+                                            <a href="detail.html" class="btn btn-sm btn-dark">
+                                                <i class="fas fa-search-plus"></i> Chi tiết
+                                            </a>
+                                        </td>
+                                    </tr>
+
+                                    <!-- Đơn hàng 9 -->
+                                    <tr>
+                                        <td class="fw-bold text-primary">#DH009</td>
+                                        <td>Hoàng Quốc Anh</td>
+                                        <td>0944555666</td>
+                                        <td>
+                                            <span class="badge bg-success px-2 py-1">Đã giao</span>
+                                        </td>
+                                        <td>
+                                            <a href="detail.html" class="btn btn-sm btn-dark">
+                                                <i class="fas fa-search-plus"></i> Chi tiết
+                                            </a>
+                                        </td>
+                                    </tr>
+
+                                    <!-- Đơn hàng 10 -->
+                                    <tr>
+                                        <td class="fw-bold text-primary">#DH010</td>
+                                        <td>Bùi Tuyết Vy</td>
+                                        <td>0988999000</td>
+                                        <td>
+                                            <span class="badge bg-warning text-dark px-2 py-1">Chờ duyệt</span>
+                                        </td>
+                                        <td>
+                                            <a href="detail.html" class="btn btn-sm btn-dark">
+                                                <i class="fas fa-search-plus"></i> Chi tiết
+                                            </a>
+                                        </td>
+                                    </tr>
+
+                                    <!-- Đơn hàng 11 -->
+                                    <tr>
+                                        <td class="fw-bold text-primary">#DH011</td>
+                                        <td>Nguyễn Hoàng Long</td>
+                                        <td>0912111222</td>
+                                        <td>
+                                            <span class="badge bg-success px-2 py-1">Đã giao</span>
+                                        </td>
+                                        <td>
+                                            <a href="detail.html" class="btn btn-sm btn-dark">
+                                                <i class="fas fa-search-plus"></i> Chi tiết
+                                            </a>
+                                        </td>
+                                    </tr>
+
+                                    <!-- Đơn hàng 12 -->
+                                    <tr>
+                                        <td class="fw-bold text-primary">#DH012</td>
+                                        <td>Trần Đức Mạnh</td>
+                                        <td>0923222333</td>
+                                        <td>
+                                            <span class="badge bg-info text-dark px-2 py-1">Đang giao</span>
+                                        </td>
+                                        <td>
+                                            <a href="detail.html" class="btn btn-sm btn-dark">
+                                                <i class="fas fa-search-plus"></i> Chi tiết
+                                            </a>
+                                        </td>
+                                    </tr>
+
+                                    <!-- Đơn hàng 13 -->
+                                    <tr>
+                                        <td class="fw-bold text-primary">#DH013</td>
+                                        <td>Lê Minh Triết</td>
+                                        <td>0934333444</td>
+                                        <td>
+                                            <span class="badge bg-warning text-dark px-2 py-1">Chờ duyệt</span>
+                                        </td>
+                                        <td>
+                                            <a href="detail.html" class="btn btn-sm btn-dark">
+                                                <i class="fas fa-search-plus"></i> Chi tiết
+                                            </a>
+                                        </td>
+                                    </tr>
+
+                                    <!-- Đơn hàng 14 -->
+                                    <tr>
+                                        <td class="fw-bold text-primary">#DH014</td>
+                                        <td>Phạm Thùy Chi</td>
+                                        <td>0945444555</td>
+                                        <td>
+                                            <span class="badge bg-danger px-2 py-1">Đã hủy</span>
+                                        </td>
+                                        <td>
+                                            <a href="detail.html" class="btn btn-sm btn-dark">
+                                                <i class="fas fa-search-plus"></i> Chi tiết
+                                            </a>
+                                        </td>
+                                    </tr>
+
+                                    <!-- Đơn hàng 15 -->
+                                    <tr>
+                                        <td class="fw-bold text-primary">#DH015</td>
+                                        <td>Hoàng Quốc Anh</td>
+                                        <td>0956555666</td>
+                                        <td>
+                                            <span class="badge bg-success px-2 py-1">Đã giao</span>
+                                        </td>
+                                        <td>
+                                            <a href="detail.html" class="btn btn-sm btn-dark">
+                                                <i class="fas fa-search-plus"></i> Chi tiết
+                                            </a>
+                                        </td>
+                                    </tr>
+
+                                    <!-- Đơn hàng 16 -->
+                                    <tr>
+                                        <td class="fw-bold text-primary">#DH016</td>
+                                        <td>Vũ Hoàng Yến</td>
+                                        <td>0967666777</td>
+                                        <td>
+                                            <span class="badge bg-info text-dark px-2 py-1">Đang giao</span>
+                                        </td>
+                                        <td>
+                                            <a href="detail.html" class="btn btn-sm btn-dark">
+                                                <i class="fas fa-search-plus"></i> Chi tiết
+                                            </a>
+                                        </td>
+                                    </tr>
+
+                                    <!-- Đơn hàng 17 -->
+                                    <tr>
+                                        <td class="fw-bold text-primary">#DH017</td>
+                                        <td>Ngô Gia Huy</td>
+                                        <td>0978777888</td>
+                                        <td>
+                                            <span class="badge bg-warning text-dark px-2 py-1">Chờ duyệt</span>
+                                        </td>
+                                        <td>
+                                            <a href="detail.html" class="btn btn-sm btn-dark">
+                                                <i class="fas fa-search-plus"></i> Chi tiết
+                                            </a>
+                                        </td>
+                                    </tr>
+
+                                    <!-- Đơn hàng 18 -->
+                                    <tr>
+                                        <td class="fw-bold text-primary">#DH018</td>
+                                        <td>Phan Ngọc Diệp</td>
+                                        <td>0989888999</td>
+                                        <td>
+                                            <span class="badge bg-success px-2 py-1">Đã giao</span>
+                                        </td>
+                                        <td>
+                                            <a href="detail.html" class="btn btn-sm btn-dark">
+                                                <i class="fas fa-search-plus"></i> Chi tiết
+                                            </a>
+                                        </td>
+                                    </tr>
+
+                                    <!-- Đơn hàng 19 -->
+                                    <tr>
+                                        <td class="fw-bold text-primary">#DH019</td>
+                                        <td>Dương Cẩm Tú</td>
+                                        <td>0990999000</td>
+                                        <td>
+                                            <span class="badge bg-danger px-2 py-1">Đã hủy</span>
+                                        </td>
+                                        <td>
+                                            <a href="detail.html" class="btn btn-sm btn-dark">
+                                                <i class="fas fa-search-plus"></i> Chi tiết
+                                            </a>
+                                        </td>
+                                    </tr>
+
+                                    <!-- Đơn hàng 20 -->
+                                    <tr>
+                                        <td class="fw-bold text-primary">#DH020</td>
+                                        <td>Lý Minh Khôi</td>
+                                        <td>0901000111</td>
+                                        <td>
+                                            <span class="badge bg-success px-2 py-1">Đã giao</span>
+                                        </td>
+                                        <td>
+                                            <a href="detail.html" class="btn btn-sm btn-dark">
+                                                <i class="fas fa-search-plus"></i> Chi tiết
+                                            </a>
+                                        </td>
+                                    </tr>
+
+                                </tbody>
+
+                            </table>
+                        </div>
+                    </div>
+
+                </div>
+            </div>
+
+        </main>
+    </div>
+</div>
+
+<script src="../../js/bootstrap.bundle.min.js"></script>
+</body>
+
+</html>

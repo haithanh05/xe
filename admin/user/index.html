@@ -1,0 +1,517 @@
+<!DOCTYPE html>
+<html lang="vi">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Quản lý người dùng</title>
+
+    <link class="jsbin" href="http://ajax.googleapis.com/ajax/libs/jqueryui/1/themes/base/jquery-ui.css" rel="stylesheet" type="text/css" />
+    <link rel="stylesheet" href="../../css/bootstrap.min.css">
+    <link rel="stylesheet" href="../../css/all.min.css">
+    <link rel="stylesheet" href="../../css/hotensv.css">
+    
+</head>
+
+<body>
+
+<div class="container-fluid">
+    <div class="row">
+
+        <!-- Sidebar cố định hoàn toàn bên trái -->
+        <nav class="col-md-2 d-none d-md-block bg-dark py-3 position-fixed top-0 start-0" style="height: 100vh; overflow-y: auto; z-index: 1000;">
+            <div class="sidebar-sticky">
+                <h5 class="text-white text-center mb-4">
+                    <i class="fas fa-user-shield"></i> ADMIN PANEL
+                </h5>
+
+                <ul class="nav flex-column text-white">
+
+                    <li class="nav-item mb-2">
+                        <a class="nav-link text-white" href="../index.html">
+                            <i class="fas fa-tachometer-alt"></i> Tổng quan
+                        </a>
+                    </li>
+
+                    <li class="nav-item mb-2">
+                        <a class="nav-link text-white" href="../category/index.html">
+                            <i class="fas fa-folder"></i> Quản lý danh mục
+                        </a>
+                    </li>
+
+                    <li class="nav-item mb-2">
+                        <a class="nav-link text-white" href="../product/index.html">
+                            <i class="fas fa-box"></i> Quản lý sản phẩm
+                        </a>
+                    </li>
+
+                    <li class="nav-item mb-2">
+                        <a class="nav-link text-white" href="../order/index.html">
+                            <i class="fas fa-shopping-cart"></i> Quản lý đơn hàng
+                        </a>
+                    </li>
+
+                    <li class="nav-item mb-2">
+                        <a class="nav-link text-white" href="../banner/index.html">
+                            <i class="fas fa-images"></i> Quản lý Banner
+                        </a>
+                    </li>
+
+                    <li class="nav-item mb-2">
+                        <a class="nav-link text-warning active" href="../user/index.html">
+                            <i class="fas fa-users"></i> Quản lý người dùng
+                        </a>
+                    </li>
+
+                    <li class="nav-item mt-4">
+                        <a class="nav-link text-danger" href="../../index.html">
+                            <i class="fas fa-sign-out-alt"></i> Xem Website
+                        </a>
+                    </li>
+
+                </ul>
+            </div>
+        </nav>
+
+        <!-- Nội dung (Dịch lùi sang phải col-md-10 để tránh đè cột) -->
+        <main class="col-md-10 offset-md-2 p-4">
+
+            <!-- ================= CONTENT ================= -->
+
+            <div class="container py-5">
+
+                <div class="card shadow">
+
+                    <div class="card-body">
+
+                        <div class="d-flex justify-content-between align-items-center mb-4">
+
+                            <h2 class="text-danger fw-bold">
+                                <i class="fa-solid fa-users"></i>
+                                Quản lý người dùng
+                            </h2>
+
+                            <a href="create.html" class="btn btn-danger">
+                                <i class="fa-solid fa-plus"></i>
+                                Thêm người dùng
+                            </a>
+
+                        </div>
+
+                        <div class="table-responsive">
+                            <table class="table table-bordered table-hover align-middle text-center">
+
+                                <thead class="table-danger">
+                                    <tr>
+                                        <th width="60">STT</th>
+                                        <th>Họ và tên</th>
+                                        <th>Tài khoản</th>
+                                        <th>Số điện thoại</th>
+                                        <th>Quyền</th>
+                                        <th width="180">Thao tác</th>
+                                    </tr>
+                                </thead>
+
+                                <tbody>
+
+                                    <!-- Người dùng 1 -->
+                                    <tr>
+                                        <td>1</td>
+                                        <td>Phạm Nguyễn Hải Thành</td>
+                                        <td>admin</td>
+                                        <td>0988305473</td>
+                                        <td>
+                                            <span class="badge bg-danger">Admin</span>
+                                        </td>
+                                        <td>
+                                            <a href="edit.html" class="btn btn-warning btn-sm">
+                                                <i class="fa-solid fa-pen"></i> Sửa
+                                            </a>
+                                            <button class="btn btn-danger btn-sm">
+                                                <i class="fa-solid fa-trash"></i> Xóa
+                                            </button>
+                                        </td>
+                                    </tr>
+
+                                    <!-- Người dùng 2 -->
+                                    <tr>
+                                        <td>2</td>
+                                        <td>Nguyễn Văn A</td>
+                                        <td>user01</td>
+                                        <td>0909123456</td>
+                                        <td>
+                                            <span class="badge bg-primary">Khách hàng</span>
+                                        </td>
+                                        <td>
+                                            <a href="edit.html" class="btn btn-warning btn-sm">
+                                                <i class="fa-solid fa-pen"></i> Sửa
+                                            </a>
+                                            <button class="btn btn-danger btn-sm">
+                                                <i class="fa-solid fa-trash"></i> Xóa
+                                            </button>
+                                        </td>
+                                    </tr>
+
+                                    <!-- Người dùng 3 -->
+                                    <tr>
+                                        <td>3</td>
+                                        <td>Trần Thị Thanh Vân</td>
+                                        <td>van.tranthi</td>
+                                        <td>0912345678</td>
+                                        <td>
+                                            <span class="badge bg-primary">Khách hàng</span>
+                                        </td>
+                                        <td>
+                                            <a href="edit.html" class="btn btn-warning btn-sm">
+                                                <i class="fa-solid fa-pen"></i> Sửa
+                                            </a>
+                                            <button class="btn btn-danger btn-sm">
+                                                <i class="fa-solid fa-trash"></i> Xóa
+                                            </button>
+                                        </td>
+                                    </tr>
+
+                                    <!-- Người dùng 4 -->
+                                    <tr>
+                                        <td>4</td>
+                                        <td>Lê Hoàng Gia Bảo</td>
+                                        <td>staff.bao</td>
+                                        <td>0987654321</td>
+                                        <td>
+                                            <span class="badge bg-success">Nhân viên</span>
+                                        </td>
+                                        <td>
+                                            <a href="edit.html" class="btn btn-warning btn-sm">
+                                                <i class="fa-solid fa-pen"></i> Sửa
+                                            </a>
+                                            <button class="btn btn-danger btn-sm">
+                                                <i class="fa-solid fa-trash"></i> Xóa
+                                            </button>
+                                        </td>
+                                    </tr>
+
+                                    <!-- Người dùng 5 -->
+                                    <tr>
+                                        <td>5</td>
+                                        <td>Phạm Minh Quân</td>
+                                        <td>quan.pm</td>
+                                        <td>0934567890</td>
+                                        <td>
+                                            <span class="badge bg-primary">Khách hàng</span>
+                                        </td>
+                                        <td>
+                                            <a href="edit.html" class="btn btn-warning btn-sm">
+                                                <i class="fa-solid fa-pen"></i> Sửa
+                                            </a>
+                                            <button class="btn btn-danger btn-sm">
+                                                <i class="fa-solid fa-trash"></i> Xóa
+                                            </button>
+                                        </td>
+                                    </tr>
+
+                                    <!-- Người dùng 6 -->
+                                    <tr>
+                                        <td>6</td>
+                                        <td>Nguyễn Khánh Linh</td>
+                                        <td>linh.khanh</td>
+                                        <td>0905123456</td>
+                                        <td>
+                                            <span class="badge bg-primary">Khách hàng</span>
+                                        </td>
+                                        <td>
+                                            <a href="edit.html" class="btn btn-warning btn-sm">
+                                                <i class="fa-solid fa-pen"></i> Sửa
+                                            </a>
+                                            <button class="btn btn-danger btn-sm">
+                                                <i class="fa-solid fa-trash"></i> Xóa
+                                            </button>
+                                        </td>
+                                    </tr>
+
+                                    <!-- Người dùng 7 -->
+                                    <tr>
+                                        <td>7</td>
+                                        <td>Đỗ Hoàng Bách</td>
+                                        <td>admin_bach</td>
+                                        <td>0977888999</td>
+                                        <td>
+                                            <span class="badge bg-danger">Admin</span>
+                                        </td>
+                                        <td>
+                                            <a href="edit.html" class="btn btn-warning btn-sm">
+                                                <i class="fa-solid fa-pen"></i> Sửa
+                                            </a>
+                                            <button class="btn btn-danger btn-sm">
+                                                <i class="fa-solid fa-trash"></i> Xóa
+                                            </button>
+                                        </td>
+                                    </tr>
+
+                                    <!-- Người dùng 8 -->
+                                    <tr>
+                                        <td>8</td>
+                                        <td>Vũ Thị Tuyết Mai</td>
+                                        <td>mai.vutt</td>
+                                        <td>0966111222</td>
+                                        <td>
+                                            <span class="badge bg-primary">Khách hàng</span>
+                                        </td>
+                                        <td>
+                                            <a href="edit.html" class="btn btn-warning btn-sm">
+                                                <i class="fa-solid fa-pen"></i> Sửa
+                                            </a>
+                                            <button class="btn btn-danger btn-sm">
+                                                <i class="fa-solid fa-trash"></i> Xóa
+                                            </button>
+                                        </td>
+                                    </tr>
+
+                                    <!-- Người dùng 9 -->
+                                    <tr>
+                                        <td>9</td>
+                                        <td>Phan Anh Tuấn</td>
+                                        <td>staff.tuan</td>
+                                        <td>0911222333</td>
+                                        <td>
+                                            <span class="badge bg-success">Nhân viên</span>
+                                        </td>
+                                        <td>
+                                            <a href="edit.html" class="btn btn-warning btn-sm">
+                                                <i class="fa-solid fa-pen"></i> Sửa
+                                            </a>
+                                            <button class="btn btn-danger btn-sm">
+                                                <i class="fa-solid fa-trash"></i> Xóa
+                                            </button>
+                                        </td>
+                                    </tr>
+
+                                    <!-- Người dùng 10 -->
+                                    <tr>
+                                        <td>10</td>
+                                        <td>Bùi Phương Thảo</td>
+                                        <td>thao.bp</td>
+                                        <td>0944555666</td>
+                                        <td>
+                                            <span class="badge bg-primary">Khách hàng</span>
+                                        </td>
+                                        <td>
+                                            <a href="edit.html" class="btn btn-warning btn-sm">
+                                                <i class="fa-solid fa-pen"></i> Sửa
+                                            </a>
+                                            <button class="btn btn-danger btn-sm">
+                                                <i class="fa-solid fa-trash"></i> Xóa
+                                            </button>
+                                        </td>
+                                    </tr>
+
+                                    <!-- Người dùng 11 (Thêm mới) -->
+                                    <tr>
+                                        <td>11</td>
+                                        <td>Nguyễn Hoàng Long</td>
+                                        <td>long.nh</td>
+                                        <td>0912111222</td>
+                                        <td>
+                                            <span class="badge bg-primary">Khách hàng</span>
+                                        </td>
+                                        <td>
+                                            <a href="edit.html" class="btn btn-warning btn-sm">
+                                                <i class="fa-solid fa-pen"></i> Sửa
+                                            </a>
+                                            <button class="btn btn-danger btn-sm">
+                                                <i class="fa-solid fa-trash"></i> Xóa
+                                            </button>
+                                        </td>
+                                    </tr>
+
+                                    <!-- Người dùng 12 (Thêm mới) -->
+                                    <tr>
+                                        <td>12</td>
+                                        <td>Trần Đức Mạnh</td>
+                                        <td>manh.td</td>
+                                        <td>0923222333</td>
+                                        <td>
+                                            <span class="badge bg-success">Nhân viên</span>
+                                        </td>
+                                        <td>
+                                            <a href="edit.html" class="btn btn-warning btn-sm">
+                                                <i class="fa-solid fa-pen"></i> Sửa
+                                            </a>
+                                            <button class="btn btn-danger btn-sm">
+                                                <i class="fa-solid fa-trash"></i> Xóa
+                                            </button>
+                                        </td>
+                                    </tr>
+
+                                    <!-- Người dùng 13 (Thêm mới) -->
+                                    <tr>
+                                        <td>13</td>
+                                        <td>Lê Minh Triết</td>
+                                        <td>triet.lm</td>
+                                        <td>0934333444</td>
+                                        <td>
+                                            <span class="badge bg-primary">Khách hàng</span>
+                                        </td>
+                                        <td>
+                                            <a href="edit.html" class="btn btn-warning btn-sm">
+                                                <i class="fa-solid fa-pen"></i> Sửa
+                                            </a>
+                                            <button class="btn btn-danger btn-sm">
+                                                <i class="fa-solid fa-trash"></i> Xóa
+                                            </button>
+                                        </td>
+                                    </tr>
+
+                                    <!-- Người dùng 14 (Thêm mới) -->
+                                    <tr>
+                                        <td>14</td>
+                                        <td>Phạm Thùy Chi</td>
+                                        <td>chi.pt</td>
+                                        <td>0945444555</td>
+                                        <td>
+                                            <span class="badge bg-primary">Khách hàng</span>
+                                        </td>
+                                        <td>
+                                            <a href="edit.html" class="btn btn-warning btn-sm">
+                                                <i class="fa-solid fa-pen"></i> Sửa
+                                            </a>
+                                            <button class="btn btn-danger btn-sm">
+                                                <i class="fa-solid fa-trash"></i> Xóa
+                                            </button>
+                                        </td>
+                                    </tr>
+
+                                    <!-- Người dùng 15 (Thêm mới) -->
+                                    <tr>
+                                        <td>15</td>
+                                        <td>Hoàng Quốc Anh</td>
+                                        <td>anh.hq</td>
+                                        <td>0956555666</td>
+                                        <td>
+                                            <span class="badge bg-primary">Khách hàng</span>
+                                        </td>
+                                        <td>
+                                            <a href="edit.html" class="btn btn-warning btn-sm">
+                                                <i class="fa-solid fa-pen"></i> Sửa
+                                            </a>
+                                            <button class="btn btn-danger btn-sm">
+                                                <i class="fa-solid fa-trash"></i> Xóa
+                                            </button>
+                                        </td>
+                                    </tr>
+
+                                    <!-- Người dùng 16 (Thêm mới) -->
+                                    <tr>
+                                        <td>16</td>
+                                        <td>Vũ Hoàng Yến</td>
+                                        <td>yen.vh</td>
+                                        <td>0967666777</td>
+                                        <td>
+                                            <span class="badge bg-danger">Admin</span>
+                                        </td>
+                                        <td>
+                                            <a href="edit.html" class="btn btn-warning btn-sm">
+                                                <i class="fa-solid fa-pen"></i> Sửa
+                                            </a>
+                                            <button class="btn btn-danger btn-sm">
+                                                <i class="fa-solid fa-trash"></i> Xóa
+                                            </button>
+                                        </td>
+                                    </tr>
+
+                                    <!-- Người dùng 17 (Thêm mới) -->
+                                    <tr>
+                                        <td>17</td>
+                                        <td>Ngô Gia Huy</td>
+                                        <td>huy.ng</td>
+                                        <td>0978777888</td>
+                                        <td>
+                                            <span class="badge bg-primary">Khách hàng</span>
+                                        </td>
+                                        <td>
+                                            <a href="edit.html" class="btn btn-warning btn-sm">
+                                                <i class="fa-solid fa-pen"></i> Sửa
+                                            </a>
+                                            <button class="btn btn-danger btn-sm">
+                                                <i class="fa-solid fa-trash"></i> Xóa
+                                            </button>
+                                        </td>
+                                    </tr>
+
+                                    <!-- Người dùng 18 (Thêm mới) -->
+                                    <tr>
+                                        <td>18</td>
+                                        <td>Phan Ngọc Diệp</td>
+                                        <td>diep.pn</td>
+                                        <td>0989888999</td>
+                                        <td>
+                                            <span class="badge bg-success">Nhân viên</span>
+                                        </td>
+                                        <td>
+                                            <a href="edit.html" class="btn btn-warning btn-sm">
+                                                <i class="fa-solid fa-pen"></i> Sửa
+                                            </a>
+                                            <button class="btn btn-danger btn-sm">
+                                                <i class="fa-solid fa-trash"></i> Xóa
+                                            </button>
+                                        </td>
+                                    </tr>
+
+                                    <!-- Người dùng 19 (Thêm mới) -->
+                                    <tr>
+                                        <td>19</td>
+                                        <td>Dương Cẩm Tú</td>
+                                        <td>tu.dc</td>
+                                        <td>0990999000</td>
+                                        <td>
+                                            <span class="badge bg-primary">Khách hàng</span>
+                                        </td>
+                                        <td>
+                                            <a href="edit.html" class="btn btn-warning btn-sm">
+                                                <i class="fa-solid fa-pen"></i> Sửa
+                                            </a>
+                                            <button class="btn btn-danger btn-sm">
+                                                <i class="fa-solid fa-trash"></i> Xóa
+                                            </button>
+                                        </td>
+                                    </tr>
+
+                                    <!-- Người dùng 20 (Thêm mới) -->
+                                    <tr>
+                                        <td>20</td>
+                                        <td>Lý Minh Khôi</td>
+                                        <td>khoi.lm</td>
+                                        <td>0901000111</td>
+                                        <td>
+                                            <span class="badge bg-primary">Khách hàng</span>
+                                        </td>
+                                        <td>
+                                            <a href="edit.html" class="btn btn-warning btn-sm">
+                                                <i class="fa-solid fa-pen"></i> Sửa
+                                            </a>
+                                            <button class="btn btn-danger btn-sm">
+                                                <i class="fa-solid fa-trash"></i> Xóa
+                                            </button>
+                                        </td>
+                                    </tr>
+
+                                </tbody>
+
+                            </table>
+                        </div>
+
+                    </div>
+
+                </div>
+
+            </div>
+
+        </main>
+    </div>
+</div>
+
+<script src="../../js/bootstrap.bundle.min.js"></script>
+<script src="../../js/main.js"></script>
+
+</body>
+
+</html>

@@ -1,0 +1,325 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Đăng ký thành viên - Phạm Nguyễn Hải Thành</title>
+    <link class="styles" rel="stylesheet" href="css/bootstrap.min.css">
+    <link class="styles" rel="stylesheet" href="css/all.min.css">
+    <link class="styles" rel="stylesheet" href="css/hotensv.css">
+
+    <!-- Phong cách thiết kế Đen Thể Thao chuyên nghiệp -->
+    <style>
+        /* Tùy chỉnh form nhập liệu thể thao */
+        .register-control {
+            border: 1px solid #dee2e6;
+            padding: 12px 16px;
+            transition: all 0.3s ease;
+            font-weight: 500;
+        }
+        .register-control:focus {
+            background-color: #fff;
+            border-color: #dc3545 !important;
+            box-shadow: 0 0 12px rgba(220, 53, 69, 0.15) !important;
+            outline: none;
+        }
+        
+        /* Hiệu ứng viền Icon đồng bộ màu đỏ khi focus */
+        .input-group:focus-within .input-group-text {
+            border-color: #dc3545 !important;
+            color: #dc3545 !important;
+            background-color: rgba(220, 53, 69, 0.02) !important;
+        }
+        .input-group-text {
+            transition: all 0.3s ease;
+            border-right: none !important;
+        }
+
+        /* Thẻ Card Đăng Ký phong cách Racing */
+        .register-card {
+            border: none !important;
+            border-top: 4px solid #dc3545 !important; /* Viền đỏ LED thể thao */
+            border-radius: 16px !important;
+            box-shadow: 0 15px 40px rgba(0, 0, 0, 0.08) !important;
+            background: #fff;
+            overflow: hidden;
+        }
+
+        /* Label của form phong cách tinh gọn */
+        .form-label-sport {
+            font-size: 0.85rem;
+            text-transform: uppercase;
+            font-weight: 700;
+            color: #495057;
+            letter-spacing: 0.5px;
+            margin-bottom: 8px;
+        }
+
+        /* Đường dẫn Đăng nhập */
+        .login-link {
+            color: #dc3545;
+            text-decoration: none;
+            font-weight: 700;
+            transition: all 0.2s ease;
+        }
+        .login-link:hover {
+            color: #bd2130;
+            text-decoration: underline;
+        }
+    </style>
+</head>
+<body class="bg-light">
+
+
+    <!-- ================= TOPBAR (THÔNG TIN LIÊN HỆ & ĐĂNG NHẬP) ================= -->
+    <div class="top-header text-white-50 py-2 d-none d-md-block">
+        <div class="container">
+            <div class="row align-items-center">
+                <div class="col-md-7">
+                    <span class="me-4"><i class="fa-solid fa-map-marker-alt text-danger me-2"></i>Khu Công Nghệ Cao, Q. 9, TP. Hồ Chí Minh</span>
+                    <span><i class="fa-solid fa-phone text-danger me-2"></i>Hotline lái thử & Đặt xe: 0988.305.473</span>
+                </div>
+                <div class="col-md-5 text-end">
+                    <a href="login.html" class="text-white-50 text-decoration-none me-3 hover-white"><i class="fa-solid fa-sign-in-alt me-1 text-danger"></i>Đăng nhập</a>
+                    <a href="register.html" class="text-white-50 text-decoration-none hover-white"><i class="fa-solid fa-user-plus me-1 text-danger"></i>Đăng ký thành viên</a>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- ================= NAVBAR (THANH CHƯƠNG TRÌNH ĐIỀU HƯỚNG) ================= -->
+    <nav class="navbar navbar-expand-lg navbar-light bg-white sticky-top shadow-sm py-3">
+        <div class="container">
+            <!-- Logo thương hiệu -->
+            <a class="navbar-brand d-flex align-items-center" href="index.html">
+                <img src="images/logo.png" alt="Honda Logo" height="42">
+                <div class="ms-3 border-start border-2 border-danger ps-3">
+                    <h4 class="mb-0 fw-extrabold text-danger text-uppercase" style="letter-spacing: -0.5px;">Honda Hải Thành</h4>
+                    <small class="text-muted text-uppercase fw-bold" style="font-size: 0.7rem;">Hành trình dẫn lối thành công</small>
+                </div>
+            </a>
+            
+            <button class="navbar-toggler border-0" type="button" data-bs-toggle="collapse" data-bs-target="#mainNavbar">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+
+            <div class="collapse navbar-collapse" id="mainNavbar">
+                <ul class="navbar-nav mx-auto mb-2 mb-lg-0 fw-semibold text-uppercase" style="font-size: 0.9rem;">
+                    <li class="nav-item">
+                        <a class="nav-link text-dark" href="index.html">Trang chủ</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link text-dark" href="product.html">Sản phẩm Ôtô</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link text-dark" href="post.html">Tin tức & Khuyến mãi</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link text-dark" href="contact.html">Liên hệ</a>
+                    </li>
+                </ul>
+                <div class="d-flex gap-2">
+                    <a href="cart.html" class="btn btn-outline-danger rounded-pill px-4 btn-sm d-flex align-items-center fw-bold">
+                        <i class="fa-solid fa-heart me-2"></i>Xe quan tâm
+                    </a>
+                    <a href="admin/index.html" class="btn btn-dark rounded-pill px-4 btn-sm d-flex align-items-center fw-bold">
+                        <i class="fa-solid fa-user-shield me-2"></i>Trang Admin
+                    </a>
+                </div>
+            </div>
+        </div>
+    </nav>
+
+
+    <!-- ================= BANNER (ĐỒNG BỘ ĐEN THỂ THAO) ================= -->
+    <section class="text-white py-5 position-relative" style="
+        background: linear-gradient(135deg, rgba(11, 11, 12, 0.96) 35%, rgba(20, 20, 22, 0.85) 100%), 
+                    url('images/honda-racing-bg.jpg') no-repeat center center;
+        background-size: cover;
+        border-bottom: 4px solid #dc3545;
+        box-shadow: 0 10px 30px rgba(0, 0, 0, 0.5);
+        overflow: hidden;
+    ">
+        <!-- Lưới tổ ong (Honeycomb Grid) tạo chiều sâu 3D -->
+        <div class="position-absolute top-0 start-0 w-100 h-100" style="
+            background-image: radial-gradient(rgba(220, 53, 69, 0.12) 1px, transparent 0);
+            background-size: 20px 20px;
+            pointer-events: none;
+            z-index: 1;
+        "></div>
+
+        <div class="container text-center py-4 position-relative" style="z-index: 2;">
+            <div class="d-inline-block border border-danger px-3 py-1 mb-3 rounded-1 text-danger fw-bold text-uppercase" style="
+                font-size: 0.75rem; 
+                letter-spacing: 2px; 
+                background-color: rgba(220, 53, 69, 0.12);
+                box-shadow: 0 0 15px rgba(220, 53, 69, 0.25);
+            ">
+                <i class="fa-solid fa-user-plus me-1"></i> Register Center
+            </div>
+            
+            <h1 class="fw-extrabold text-uppercase display-5 mb-2" style="
+                font-weight: 900; 
+                letter-spacing: 2px; 
+                text-shadow: 0 3px 10px rgba(0, 0, 0, 0.9);
+            ">
+                Đăng ký <span class="text-danger">tài khoản</span>
+            </h1>
+            
+            <p class="lead mb-0 text-muted font-monospace" style="
+                font-size: 0.95rem; 
+                color: #a0a0a5 !important;
+                letter-spacing: 0.5px;
+            ">
+                Tạo tài khoản thành viên để tận hưởng trọn vẹn đặc quyền từ Honda Hải Thành.
+            </p>
+        </div>
+    </section>
+
+
+    <!-- ================= KHU VỰC FORM ĐĂNG KÝ ================= -->
+    <section class="container py-5">
+        <div class="row justify-content-center">
+            <div class="col-lg-5 col-md-8">
+                
+                <div class="card register-card p-2">
+                    <div class="card-body p-4">
+                        
+                        <!-- Tiêu đề phụ Form -->
+                        <div class="text-center mb-4">
+                            <h3 class="fw-extrabold text-uppercase text-dark mb-1">Đăng ký thành viên</h3>
+                            <p class="text-muted small">Vui lòng nhập đầy đủ thông tin bên dưới</p>
+                        </div>
+
+                        <!-- Form Đăng Ký -->
+                        <form onsubmit="registerUser(event)">
+
+                            <!-- Tên tài khoản -->
+                            <div class="mb-3">
+                                <label for="username" class="form-label-sport">
+                                    <i class="fa-solid fa-circle-user text-danger me-1"></i> Tên tài khoản
+                                </label>
+                                <div class="input-group">
+                                    <span class="input-group-text bg-light border-end-0 text-muted">
+                                        <i class="fa-solid fa-user"></i>
+                                    </span>
+                                    <input type="text" id="username" class="form-control register-control border-start-0 bg-light" placeholder="Nhập tài khoản đăng nhập..." required>
+                                </div>
+                            </div>
+
+                            <!-- Mật khẩu -->
+                            <div class="mb-3">
+                                <label for="password" class="form-label-sport">
+                                    <i class="fa-solid fa-shield-halved text-danger me-1"></i> Mật khẩu
+                                </label>
+                                <div class="input-group">
+                                    <span class="input-group-text bg-light border-end-0 text-muted">
+                                        <i class="fa-solid fa-lock"></i>
+                                    </span>
+                                    <input type="password" id="password" class="form-control register-control border-start-0 bg-light" placeholder="Nhập mật khẩu an toàn..." required>
+                                </div>
+                            </div>
+
+                            <!-- Nhập lại mật khẩu -->
+                            <div class="mb-4">
+                                <label for="repassword" class="form-label-sport">
+                                    <i class="fa-solid fa-lock-open text-danger me-1"></i> Nhập lại mật khẩu
+                                </label>
+                                <div class="input-group">
+                                    <span class="input-group-text bg-light border-end-0 text-muted">
+                                        <i class="fa-solid fa-key"></i>
+                                    </span>
+                                    <input type="password" id="repassword" class="form-control register-control border-start-0 bg-light" placeholder="Xác nhận lại mật khẩu..." required>
+                                </div>
+                            </div>
+
+                            <!-- Nút gửi đăng ký -->
+                            <button type="submit" class="btn btn-danger w-100 rounded-pill py-3 fw-bold text-uppercase shadow-sm mb-3">
+                                <i class="fa-solid fa-user-plus me-2"></i> Hoàn tất đăng ký
+                            </button>
+
+                        </form>
+
+                        <hr class="text-muted opacity-25">
+
+                        <!-- Chuyển sang Đăng nhập -->
+                        <div class="text-center small text-muted">
+                            Đã có tài khoản thành viên? 
+                            <a href="login.html" class="login-link ms-1">
+                                <i class="fa-solid fa-right-to-bracket me-1"></i> Đăng nhập ngay
+                            </a>
+                        </div>
+
+                    </div>
+                </div>
+
+            </div>
+        </div>
+    </section>
+
+    
+    <!-- ================= FOOTER ================= -->
+    <footer class="bg-dark text-white pt-5 pb-3">
+        <div class="container">
+            <div class="row g-4">
+                <!-- Cột 1: Giới thiệu -->
+                <div class="col-lg-4 col-md-6">
+                    <h5 class="text-uppercase fw-bold text-danger mb-4">Honda Hải Thành</h5>
+                    <p class="text-white-50" style="font-size: 0.9rem; line-height: 1.8;">
+                        Đại lý ủy quyền chính thức của Honda Việt Nam. Chúng tôi cam kết mang lại những sản phẩm chất lượng cao cùng dịch vụ bảo dưỡng, bảo hành tốt nhất cho quý khách hàng.
+                    </p>
+                    <div class="d-flex gap-2 mt-3">
+                        <a href="#" class="btn btn-outline-light btn-sm rounded-circle" style="width: 36px; height: 36px; line-height: 24px;"><i class="fab fa-facebook-f"></i></a>
+                        <a href="#" class="btn btn-outline-light btn-sm rounded-circle" style="width: 36px; height: 36px; line-height: 24px;"><i class="fab fa-youtube"></i></a>
+                        <a href="#" class="btn btn-outline-light btn-sm rounded-circle" style="width: 36px; height: 36px; line-height: 24px;"><i class="fab fa-instagram"></i></a>
+                    </div>
+                </div>
+                <!-- Cột 2: Danh mục nhanh -->
+                <div class="col-lg-2 col-md-6">
+                    <h5 class="text-uppercase fw-bold text-white mb-4" style="font-size: 1rem;">Liên kết nhanh</h5>
+                    <ul class="list-unstyled d-flex flex-column gap-2" style="font-size: 0.9rem;">
+                        <li><a href="index.html" class="text-white-50 text-decoration-none hover-white">Trang chủ</a></li>
+                        <li><a href="product.html" class="text-white-50 text-decoration-none hover-white">Sản phẩm Ôtô</a></li>
+                        <li><a href="post.html" class="text-white-50 text-decoration-none hover-white">Tin tức & Khuyến mãi</a></li>
+                        <li><a href="contact.html" class="text-white-50 text-decoration-none hover-white">Liên hệ</a></li>
+                    </ul>
+                </div>
+                <!-- Cột 3: Chính sách -->
+                <div class="col-lg-3 col-md-6">
+                    <h5 class="text-uppercase fw-bold text-white mb-4" style="font-size: 1rem;">Chính sách hỗ trợ</h5>
+                    <ul class="list-unstyled d-flex flex-column gap-2" style="font-size: 0.9rem;">
+                        <li><a href="#" class="text-white-50 text-decoration-none hover-white">Chính sách bảo hành</a></li>
+                        <li><a href="#" class="text-white-50 text-decoration-none hover-white">Chính sách trả góp 0%</a></li>
+                        <li><a href="#" class="text-white-50 text-decoration-none hover-white">Đăng ký lái thử tại nhà</a></li>
+                        <li><a href="#" class="text-white-50 text-decoration-none hover-white">Chính sách bảo mật thông tin</a></li>
+                    </ul>
+                </div>
+                <!-- Cột 4: Liên hệ -->
+                <div class="col-lg-3 col-md-6">
+                    <h5 class="text-uppercase fw-bold text-white mb-4" style="font-size: 1rem;">Thông tin liên hệ</h5>
+                    <ul class="list-unstyled text-white-50 d-flex flex-column gap-3" style="font-size: 0.9rem;">
+                        <li><i class="fa-solid fa-map-marker-alt text-danger me-2"></i> Khu Công Nghệ Cao, Q. 9, TP. Hồ Chí Minh</li>
+                        <li><i class="fa-solid fa-phone text-danger me-2"></i> 0988.305.473</li>
+                        <li><i class="fa-solid fa-envelope text-danger me-2"></i> hotro@hondahaithanh.com</li>
+                    </ul>
+                </div>
+            </div>
+            <hr class="my-4 border-secondary">
+            <div class="row align-items-center">
+                <div class="col-md-6 text-center text-md-start">
+                    <p class="mb-0 text-white-50" style="font-size: 0.85rem;">
+                        &copy; 2026 Bản quyền thuộc về <strong class="text-white">Phạm Nguyễn Hải Thành</strong>. Tất cả quyền được bảo lưu.
+                    </p>
+                </div>
+                <div class="col-md-6 text-center text-md-end mt-2 mt-md-0">
+                    <p class="mb-0 text-white-50" style="font-size: 0.85rem;">MSSV: [Điền MSSV của bạn]</p>
+                </div>
+            </div>
+        </div>
+    </footer>
+
+
+    <script src="js/bootstrap.bundle.min.js"></script>
+    <script src="js/main.js"></script>
+</body>
+</html>

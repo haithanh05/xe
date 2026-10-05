@@ -1,0 +1,172 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Thêm sản phẩm mới - Hệ thống Quản trị</title>
+    <!-- CSS liên kết từ thư mục gốc (quay lui 2 cấp) -->
+    <link rel="stylesheet" href="../../css/bootstrap.min.css">
+    <link rel="stylesheet" href="../../css/all.min.css">
+    <link rel="stylesheet" href="../../css/hotensv.css">
+
+    <style>
+        /* CSS cố định Sidebar bên trái */
+        @media (min-width: 768px) {
+            .sidebar {
+                position: fixed;
+                top: 0;
+                bottom: 0;
+                left: 0;
+                z-index: 100;
+                height: 100vh;
+                overflow-y: auto; /* Cuộn sidebar độc lập nếu menu quá dài */
+            }
+            
+            /* Đẩy phần nội dung chính sang phải để không bị Sidebar đè lên */
+            main {
+                margin-left: 16.666667%; /* Chiếm đúng độ rộng của col-md-2 */
+            }
+        }
+    </style>
+</head>
+<body class="bg-light">
+
+    <div class="container-fluid">
+        <div class="row">
+            <!-- ================= SIDEBAR BÊN TRÁI ================= -->
+            <nav class="col-md-2 d-none d-md-block bg-dark sidebar py-3">
+                <div class="sidebar-sticky">
+                    <h5 class="text-white text-center mb-4">
+                        <i class="fas fa-user-shield"></i> ADMIN PANEL
+                    </h5>
+                    <ul class="nav flex-column text-white">
+                        <li class="nav-item mb-2">
+                            <!-- Quay lui 1 cấp để ra trang tổng quan admin/index.html -->
+                            <a class="nav-link text-white" href="../index.html">
+                                <i class="fas fa-tachometer-alt"></i> Tổng quan
+                            </a>
+                        </li>
+                        <li class="nav-item mb-2">
+                            <a class="nav-link text-white" href="../category/index.html">
+                                <i class="fas fa-folder"></i> Quản lý danh mục
+                            </a>
+                        </li>
+                        <li class="nav-item mb-2">
+                            <!-- Giữ trạng thái Active màu vàng nổi bật cho phân hệ Sản phẩm -->
+                            <a class="nav-link text-warning active fw-bold" href="index.html">
+                                <i class="fas fa-box"></i> Quản lý sản phẩm
+                            </a>
+                        </li>
+                        <li class="nav-item mb-2">
+                            <a class="nav-link text-white" href="../order/index.html">
+                                <i class="fas fa-shopping-cart"></i> Quản lý đơn hàng
+                            </a>
+                        </li>
+                        <li class="nav-item mb-2">
+                            <a class="nav-link text-white" href="../banner/index.html">
+                                <i class="fas fa-images"></i> Quản lý Banner
+                            </a>
+                        </li>
+                        <li class="nav-item mb-2">
+                            <a class="nav-link text-white" href="../user/index.html">
+                                <i class="fas fa-users"></i> Quản lý người dùng
+                            </a>
+                        </li>
+                        <li class="nav-item mt-4">
+                            <!-- Quay lui 2 cấp để về trang chủ index.html của website -->
+                            <a class="nav-link text-danger" href="../../index.html">
+                                <i class="fas fa-sign-out-alt"></i> Xem Website
+                            </a>
+                        </li>
+                    </ul>
+                </div>
+            </nav>
+
+            <!-- ================= NỘI DUNG CHÍNH BÊN PHẢI ================= -->
+            <main role="main" class="col-md-10 px-4 py-3">
+                <!-- TIÊU ĐỀ TRANG VÀ ĐIỀU HƯỚNG QUAY LẠI -->
+                <div class="d-flex justify-content-between align-items-center pt-3 pb-2 mb-4 border-bottom">
+                    <h2 class="fw-bold h3 mb-0">
+                        <i class="fa-solid fa-plus text-danger me-2"></i> Thêm sản phẩm
+                    </h2>
+                    <a href="index.html" class="btn btn-secondary shadow-sm">
+                        <i class="fa-solid fa-arrow-left me-1"></i> Quay lại danh sách
+                    </a>
+                </div>
+
+                <!-- FORM THÊM MỚI SẢN PHẨM -->
+                <div class="card shadow border-0 mt-2">
+                    <div class="card-body p-4">
+                        <h4 class="text-danger mb-4 fw-bold">Thông tin xe mới</h4>
+                        
+                        <form>
+                            <div class="row">
+                                <!-- Tên sản phẩm -->
+                                <div class="col-md-6 mb-3">
+                                    <label class="form-label fw-semibold">Tên xe / Sản phẩm</label>
+                                    <input type="text" class="form-control" placeholder="Ví dụ: Honda Civic e:HEV RS..." required>
+                                </div>
+
+                                <!-- Giá bán -->
+                                <div class="col-md-6 mb-3">
+                                    <label class="form-label fw-semibold">Giá bán (VNĐ)</label>
+                                    <input type="text" class="form-control" placeholder="Ví dụ: 870.000.000" required>
+                                </div>
+                            </div>
+
+                            <div class="row">
+                                <!-- Danh mục sản phẩm -->
+                                <div class="col-md-6 mb-3">
+                                    <label class="form-label fw-semibold">Phân khúc / Danh mục</label>
+                                    <select class="form-select">
+                                        <option value="Sedan">Sedan</option>
+                                        <option value="SUV" selected>SUV</option>
+                                        <option value="Hatchback">Hatchback</option>
+                                        <option value="MPV">MPV</option>
+                                    </select>
+                                </div>
+
+                                <!-- Trạng thái -->
+                                <div class="col-md-6 mb-3">
+                                    <label class="form-label fw-semibold">Trạng thái kinh doanh</label>
+                                    <select class="form-select">
+                                        <option value="1" selected>Đang bán</option>
+                                        <option value="0">Tạm ngưng / Hết hàng</option>
+                                    </select>
+                                </div>
+                            </div>
+
+                            <!-- Chọn ảnh sản phẩm -->
+                            <div class="mb-3">
+                                <label class="form-label fw-semibold">Hình ảnh sản phẩm</label>
+                                <input type="file" class="form-control">
+                                <div class="form-text">Nên chọn ảnh định dạng .png hoặc .jpg có kích thước cân đối.</div>
+                            </div>
+
+                            <!-- Mô tả tóm tắt (Nếu cần) -->
+                            <div class="mb-4">
+                                <label class="form-label fw-semibold">Mô tả tóm tắt thông số</label>
+                                <textarea class="form-control" rows="3" placeholder="Nhập một vài thông số nổi bật (Động cơ, hộp số, công suất...)"></textarea>
+                            </div>
+
+                            <!-- Nút Thao tác -->
+                            <div class="border-top pt-3">
+                                <a href="index.html" class="btn btn-secondary px-4 me-2">
+                                    Hủy bỏ
+                                </a>
+                                <button type="submit" class="btn btn-danger px-4">
+                                    <i class="fa-solid fa-save me-1"></i> Lưu sản phẩm
+                                </button>
+                            </div>
+                        </form>
+                    </div>
+                </div>
+            </main>
+        </div>
+    </div>
+
+    <!-- JS liên kết từ thư mục gốc (quay lui 2 cấp) -->
+    <script src="../../js/bootstrap.bundle.min.js"></script>
+    <script src="../../js/main.js"></script>
+</body>
+</html>
